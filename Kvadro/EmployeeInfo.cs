@@ -23,7 +23,6 @@ namespace Kvadro
     //    public string Language { get; set; }
     //    public string Base { get; set; }
     //    public string Comment { get; set; }
-    //    public byte[] Picture { get; set; }
     //    public Nullable<int> BonusAll { get; set; }
     //    public Nullable<System.DateTime> EmployeeStart { get; set; }
     //    public Nullable<System.DateTime> EmployeeStop { get; set; }

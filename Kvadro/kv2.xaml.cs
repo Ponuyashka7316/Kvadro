@@ -17,6 +17,7 @@ using System.Data.Entity.Core.Objects;
 using System.Data.SqlClient;
 using System.Data;
 
+
 namespace Kvadro
 {
     /// <summary>
@@ -24,12 +25,13 @@ namespace Kvadro
     /// </summary>
     public partial class kv2 : Window
     {
-        KvadroModel db;
+        
+        KvadroEntities6 db;
         public kv2()
         {
             InitializeComponent();
             //DataContext = this;
-            db = new KvadroEntities3();
+            db = new KvadroEntities6();
             //ObjectQuery<ProjectInfo> products = db.ProjectInfos;
 
             //var query =
@@ -43,7 +45,7 @@ namespace Kvadro
             var data = from r in db.ProjectInfo select r;
             kvadroGrid.ItemsSource = data.ToList();
 
-            var ConnectionString = @"Data Source=PC\SQLSERVER;Initial Catalog=Kvadro;Integrated Security=True";
+            var ConnectionString = @"Data Source=SERGEY-PC;Initial Catalog=Kvadro;Integrated Security=True";
             
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
@@ -79,7 +81,7 @@ namespace Kvadro
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            int pr_id = (int)(kvadroGrid.SelectedItem as ProjectInfo).ProjectID;
+            long pr_id = (kvadroGrid.SelectedItem as ProjectInfo).ProjectID;
             ProjectInfo pr = (from r in db.ProjectInfo where r.ProjectID == pr_id select r).SingleOrDefault();
             db.ProjectInfo.Remove(pr);
             db.SaveChanges();
@@ -122,6 +124,11 @@ namespace Kvadro
             db.ProjectInfo.Add(prj);
             db.SaveChanges();
             kvadroGrid.ItemsSource = db.ProjectInfo.ToList();
+        }
+
+        private void kvadroGrid_CurrentCellChanged(object sender, EventArgs e)
+        {
+            //id.Text = DataGridCellInfo.
         }
     }
 }

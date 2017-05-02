@@ -39,7 +39,7 @@
                             <RowDefinition Height="*" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <DataGrid  ItemsSource="{Binding UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" x:Name="kvadroGrid" Margin="0,0,262,30">
+                        <DataGrid  ItemsSource="{Binding UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" x:Name="kvadroGrid" Margin="0,0,262,30" CurrentCellChanged="kvadroGrid_CurrentCellChanged">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Binding="{Binding Path=ProjectID}" Header="ProjectID" Width="100" PastingCellClipboardContent="DataGridTextColumn_PastingCellClipboardContent"/>
                                 <DataGridTextColumn Binding="{Binding Path=ProjectName}" Header="ProjectName" Width="100"/>

@@ -31,7 +31,6 @@
           <Property Name="Language" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Base" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Comment" Type="text" Nullable="false" />
-          <Property Name="Picture" Type="image" />
           <Property Name="BonusAll" Type="int" />
           <Property Name="EmployeeStart" Type="date" />
           <Property Name="EmployeeStop" Type="date" />
@@ -145,7 +144,6 @@
           <Property Name="Language" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Base" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="BonusAll" Type="Int32" />
           <Property Name="EmployeeStart" Type="DateTime" Precision="0" />
           <Property Name="EmployeeStop" Type="DateTime" Precision="0" />
@@ -214,7 +212,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="KvadroEntities4" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="KvadroEntities6" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CustomerInfo" EntityType="Self.CustomerInfo" />
           <EntitySet Name="EmployeeInfo" EntityType="Self.EmployeeInfo" />
           <EntitySet Name="ProjectInfo" EntityType="Self.ProjectInfo" />
@@ -237,7 +235,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище KvadroModelContainer" CdmEntityContainer="KvadroEntities4">
+        <EntityContainerMapping StorageEntityContainer="Хранилище KvadroModelContainer" CdmEntityContainer="KvadroEntities6">
           <EntitySetMapping Name="CustomerInfo">
             <EntityTypeMapping TypeName="KvadroModel.CustomerInfo">
               <MappingFragment StoreEntitySet="CustomerInfo">
@@ -264,7 +262,6 @@
                 <ScalarProperty Name="Language" ColumnName="Language" />
                 <ScalarProperty Name="Base" ColumnName="Base" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
-                <ScalarProperty Name="Picture" ColumnName="Picture" />
                 <ScalarProperty Name="BonusAll" ColumnName="BonusAll" />
                 <ScalarProperty Name="EmployeeStart" ColumnName="EmployeeStart" />
                 <ScalarProperty Name="EmployeeStop" ColumnName="EmployeeStop" />
