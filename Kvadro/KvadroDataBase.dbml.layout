@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="KvadroDataBase">
+  <DataContextMoniker Name="/KvadroDataBaseDataContext" />
+  <nestedChildShapes>
+    <classShape Id="6d7aa6e0-e625-473d-b60e-7b86a90e5ed5" absoluteBounds="0.5, 0.5, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/KvadroDataBaseDataContext/CustomerInfo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="67a7c117-8ac6-4d0d-80ad-33743fbe7a1d" absoluteBounds="0.515, 0.96, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3eaa2c7c-b43c-43eb-883f-362f95ab4a50" absoluteBounds="3.125, 0.5, 2, 3.5016097005208326">
+      <DataClassMoniker Name="/KvadroDataBaseDataContext/EmployeeInfo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="15502d50-ac8e-46b4-8a35-37485b527250" absoluteBounds="3.14, 0.96, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="909eef08-a55d-47ca-9fe9-dc6635a01e4c" absoluteBounds="0.5, 3.25, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/KvadroDataBaseDataContext/ProjectInfo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6681f887-b74d-455e-8c11-bf6c576ec321" absoluteBounds="0.515, 3.71, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.5 : 3.62580485026042); (3.125 : 3.62580485026042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/KvadroDataBaseDataContext/ProjectInfo/ProjectInfo_EmployeeInfo" />
+      <nodes>
+        <classShapeMoniker Id="909eef08-a55d-47ca-9fe9-dc6635a01e4c" />
+        <classShapeMoniker Id="3eaa2c7c-b43c-43eb-883f-362f95ab4a50" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.5 : 2.84780110677083); (1.5 : 3.25)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/KvadroDataBaseDataContext/CustomerInfo/CustomerInfo_ProjectInfo" />
+      <nodes>
+        <classShapeMoniker Id="6d7aa6e0-e625-473d-b60e-7b86a90e5ed5" />
+        <classShapeMoniker Id="909eef08-a55d-47ca-9fe9-dc6635a01e4c" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="6e7a92c5-3125-441a-a00d-a8efa5a070c3" absoluteBounds="3.125, 4.375, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/KvadroDataBaseDataContext/SalaryInfo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5c2b634b-e3d6-419d-9c17-4f3d2b1161fe" absoluteBounds="3.14, 4.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.125 : 4.375); (4.125 : 4.00160970052083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/KvadroDataBaseDataContext/SalaryInfo/SalaryInfo_EmployeeInfo" />
+      <nodes>
+        <classShapeMoniker Id="6e7a92c5-3125-441a-a00d-a8efa5a070c3" />
+        <classShapeMoniker Id="3eaa2c7c-b43c-43eb-883f-362f95ab4a50" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

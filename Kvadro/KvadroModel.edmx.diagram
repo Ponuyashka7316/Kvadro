@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="93e0d08d775c414eb3eebeb5f60cec10" Name="Diagram1">
+        <EntityTypeShape EntityType="KvadroModel.CustomerInfo" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KvadroModel.EmployeeInfo" Width="1.5" PointX="5.375" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KvadroModel.ProjectInfo" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KvadroModel.SalaryInfo" Width="1.5" PointX="7.5" PointY="2.125" IsExpanded="true" />
+        <AssociationConnector Association="KvadroModel.FK_ProjectInfo_CustomerInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="KvadroModel.FK_EmployeeInfo_ProjectInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="KvadroModel.FK_EmployeeInfo_ProjectInfo1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

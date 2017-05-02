@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище KvadroModel1Container" CdmEntityContainer="KvadroEntities2">
+    <EntitySetMapping Name="CustomerInfo">
+      <EntityTypeMapping TypeName="KvadroModel1.CustomerInfo">
+        <MappingFragment StoreEntitySet="CustomerInfo">
+          <ScalarProperty Name="Customer" ColumnName="Customer" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Bank" ColumnName="Bank" />
+          <ScalarProperty Name="Account" ColumnName="Account" />
+          <ScalarProperty Name="INN" ColumnName="INN" />
+          <ScalarProperty Name="AdressCost" ColumnName="AdressCost" />
+          <ScalarProperty Name="FioWorker" ColumnName="FioWorker" />
+          <ScalarProperty Name="PhoneWorker" ColumnName="PhoneWorker" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

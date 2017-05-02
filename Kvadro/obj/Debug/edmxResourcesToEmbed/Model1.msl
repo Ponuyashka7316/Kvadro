@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище KvadroModelContainer" CdmEntityContainer="KvadroEntities3">
+    <EntitySetMapping Name="ProjectInfo">
+      <EntityTypeMapping TypeName="KvadroModel.ProjectInfo">
+        <MappingFragment StoreEntitySet="ProjectInfo">
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="ProjectStart" ColumnName="ProjectStart" />
+          <ScalarProperty Name="ProjectStop" ColumnName="ProjectStop" />
+          <ScalarProperty Name="Chief" ColumnName="Chief" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="INN" ColumnName="INN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

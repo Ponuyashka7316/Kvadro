@@ -34,8 +34,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -54,6 +65,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CustomerInfo.cs">
+      <DependentUpon>KvadroModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeInfo.cs">
+      <DependentUpon>KvadroModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KvadroModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KvadroModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectInfo.cs">
+      <DependentUpon>KvadroModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalaryInfo.cs">
+      <DependentUpon>KvadroModel.tt</DependentUpon>
+    </Compile>
+    <Page Include="kv2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -61,6 +93,27 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="kv2.xaml.cs">
+      <DependentUpon>kv2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="KvadroDataBase.cs">
+      <DependentUpon>KvadroDataBase.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="KvadroDataBase.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KvadroDataBase.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="KvadroModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KvadroModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KvadroModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KvadroModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -85,6 +138,22 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="KvadroDataBase.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>KvadroDataBase.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="KvadroDataBase.dbml.layout">
+      <DependentUpon>KvadroDataBase.dbml</DependentUpon>
+    </None>
+    <EntityDeploy Include="KvadroModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>KvadroModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="KvadroModel.edmx.diagram">
+      <DependentUpon>KvadroModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -92,6 +161,31 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\MainImage.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\image01.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="KvadroModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>KvadroModel.edmx</DependentUpon>
+      <LastGenOutput>KvadroModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="KvadroModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>KvadroModel.edmx</DependentUpon>
+      <LastGenOutput>KvadroModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

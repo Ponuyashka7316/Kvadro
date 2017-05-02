@@ -1,0 +1,45 @@
+c:\users\сергей\documents\visual studio 2017\Projects\Kvadro\Kvadro\bin\Debug\Kvadro.exe.config
+c:\users\сергей\documents\visual studio 2017\Projects\Kvadro\Kvadro\bin\Debug\Kvadro.exe
+c:\users\сергей\documents\visual studio 2017\Projects\Kvadro\Kvadro\bin\Debug\Kvadro.pdb
+c:\users\сергей\documents\visual studio 2017\Projects\Kvadro\Kvadro\obj\Debug\MainWindow.g.cs
+c:\users\сергей\documents\visual studio 2017\Projects\Kvadro\Kvadro\obj\Debug\App.g.cs
+c:\users\сергей\documents\visual studio 2017\Projects\Kvadro\Kvadro\obj\Debug\Kvadro_MarkupCompile.cache
+c:\users\сергей\documents\visual studio 2017\Projects\Kvadro\Kvadro\obj\Debug\MainWindow.baml
+c:\users\сергей\documents\visual studio 2017\Projects\Kvadro\Kvadro\obj\Debug\Kvadro.g.resources
+c:\users\сергей\documents\visual studio 2017\Projects\Kvadro\Kvadro\obj\Debug\Kvadro.Properties.Resources.resources
+c:\users\сергей\documents\visual studio 2017\Projects\Kvadro\Kvadro\obj\Debug\Kvadro.csproj.GenerateResource.Cache
+c:\users\сергей\documents\visual studio 2017\Projects\Kvadro\Kvadro\obj\Debug\Kvadro.exe
+c:\users\сергей\documents\visual studio 2017\Projects\Kvadro\Kvadro\obj\Debug\Kvadro.pdb
+C:\Users\Сергей\documents\visual studio 2017\Projects\Kvadro\Kvadro\bin\Debug\EntityFramework.dll
+C:\Users\Сергей\documents\visual studio 2017\Projects\Kvadro\Kvadro\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Сергей\documents\visual studio 2017\Projects\Kvadro\Kvadro\bin\Debug\EntityFramework.xml
+C:\Users\Сергей\documents\visual studio 2017\Projects\Kvadro\Kvadro\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Сергей\documents\visual studio 2017\Projects\Kvadro\Kvadro\obj\Debug\kv2.g.cs
+C:\Users\Сергей\documents\visual studio 2017\Projects\Kvadro\Kvadro\obj\Debug\Kvadro_MarkupCompile.lref
+C:\Users\Сергей\documents\visual studio 2017\Projects\Kvadro\Kvadro\obj\Debug\kv2.baml
+C:\Users\Сергей\documents\visual studio 2017\Projects\Kvadro\Kvadro\obj\Debug\Kvadro.csprojResolveAssemblyReference.cache
+C:\Users\Сергей\documents\visual studio 2017\Projects\Kvadro\Kvadro\obj\Debug\Kvadro_Content.g.cs
+C:\Users\Сергей\documents\visual studio 2017\Projects\Kvadro\Kvadro\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\Сергей\documents\visual studio 2017\Projects\Kvadro\Kvadro\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\Kvadro.csprojResolveAssemblyReference.cache
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\MainWindow.baml
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\kv2.g.cs
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\MainWindow.g.cs
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\App.g.cs
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\Kvadro_Content.g.cs
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\Kvadro_MarkupCompile.cache
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\Kvadro_MarkupCompile.lref
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\Kvadro.exe
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\Kvadro.pdb
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\bin\Debug\Kvadro.exe.config
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\bin\Debug\Kvadro.exe
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\bin\Debug\Kvadro.pdb
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\bin\Debug\EntityFramework.dll
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\bin\Debug\EntityFramework.xml
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\kv2.baml
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\Kvadro.g.resources
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\Kvadro.Properties.Resources.resources
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\Kvadro.csproj.GenerateResource.Cache

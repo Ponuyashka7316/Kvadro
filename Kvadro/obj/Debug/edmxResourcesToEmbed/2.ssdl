@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище KvadroModel1" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CustomerInfo">
+    <Key>
+      <PropertyRef Name="INN" />
+    </Key>
+    <Property Name="Customer" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="text" />
+    <Property Name="Bank" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Account" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="INN" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="AdressCost" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FioWorker" Type="varchar" MaxLength="50" />
+    <Property Name="PhoneWorker" Type="int" />
+  </EntityType>
+  <EntityContainer Name="Хранилище KvadroModel1Container">
+    <EntitySet Name="CustomerInfo" EntityType="Self.CustomerInfo" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

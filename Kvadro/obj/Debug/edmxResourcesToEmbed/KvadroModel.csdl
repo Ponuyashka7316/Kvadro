@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KvadroModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CustomerInfo">
+    <Key>
+      <PropertyRef Name="INN" />
+    </Key>
+    <Property Name="Customer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Bank" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Account" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="INN" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AdressCost" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FioWorker" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneWorker" Type="Int32" />
+    <NavigationProperty Name="ProjectInfo" Relationship="Self.FK_ProjectInfo_CustomerInfo" FromRole="CustomerInfo" ToRole="ProjectInfo" />
+  </EntityType>
+  <EntityType Name="EmployeeInfo">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="Int64" Nullable="false" />
+    <Property Name="EmployeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Adress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Experiance" Type="Int32" Nullable="false" />
+    <Property Name="Year" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Language" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Base" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="BonusAll" Type="Int32" />
+    <Property Name="EmployeeStart" Type="DateTime" Precision="0" />
+    <Property Name="EmployeeStop" Type="DateTime" Precision="0" />
+    <Property Name="ProjectID" Type="Int64" />
+    <NavigationProperty Name="SalaryInfo" Relationship="Self.FK_EmployeeInfo_ProjectInfo" FromRole="EmployeeInfo" ToRole="SalaryInfo" />
+    <NavigationProperty Name="ProjectInfo" Relationship="Self.FK_EmployeeInfo_ProjectInfo1" FromRole="EmployeeInfo" ToRole="ProjectInfo" />
+  </EntityType>
+  <EntityType Name="ProjectInfo">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="Int64" Nullable="false" />
+    <Property Name="ProjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProjectStart" Type="DateTime" Precision="0" />
+    <Property Name="ProjectStop" Type="DateTime" Precision="0" />
+    <Property Name="Chief" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="INN" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CustomerInfo" Relationship="Self.FK_ProjectInfo_CustomerInfo" FromRole="ProjectInfo" ToRole="CustomerInfo" />
+    <NavigationProperty Name="EmployeeInfo" Relationship="Self.FK_EmployeeInfo_ProjectInfo1" FromRole="ProjectInfo" ToRole="EmployeeInfo" />
+  </EntityType>
+  <EntityType Name="SalaryInfo">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="Salary" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Bonus" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="GrossSalary" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Exempt" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="EmployeeId" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="EmployeeInfo" Relationship="Self.FK_EmployeeInfo_ProjectInfo" FromRole="SalaryInfo" ToRole="EmployeeInfo" />
+  </EntityType>
+  <Association Name="FK_ProjectInfo_CustomerInfo">
+    <End Role="CustomerInfo" Type="Self.CustomerInfo" Multiplicity="0..1" />
+    <End Role="ProjectInfo" Type="Self.ProjectInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerInfo">
+        <PropertyRef Name="INN" />
+      </Principal>
+      <Dependent Role="ProjectInfo">
+        <PropertyRef Name="INN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeInfo_ProjectInfo">
+    <End Role="SalaryInfo" Type="Self.SalaryInfo" Multiplicity="1" />
+    <End Role="EmployeeInfo" Type="Self.EmployeeInfo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="SalaryInfo">
+        <PropertyRef Name="EmployeeId" />
+      </Principal>
+      <Dependent Role="EmployeeInfo">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeInfo_ProjectInfo1">
+    <End Role="ProjectInfo" Type="Self.ProjectInfo" Multiplicity="0..1" />
+    <End Role="EmployeeInfo" Type="Self.EmployeeInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectInfo">
+        <PropertyRef Name="ProjectID" />
+      </Principal>
+      <Dependent Role="EmployeeInfo">
+        <PropertyRef Name="ProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="KvadroEntities4" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CustomerInfo" EntityType="Self.CustomerInfo" />
+    <EntitySet Name="EmployeeInfo" EntityType="Self.EmployeeInfo" />
+    <EntitySet Name="ProjectInfo" EntityType="Self.ProjectInfo" />
+    <EntitySet Name="SalaryInfo" EntityType="Self.SalaryInfo" />
+    <AssociationSet Name="FK_ProjectInfo_CustomerInfo" Association="Self.FK_ProjectInfo_CustomerInfo">
+      <End Role="CustomerInfo" EntitySet="CustomerInfo" />
+      <End Role="ProjectInfo" EntitySet="ProjectInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeInfo_ProjectInfo" Association="Self.FK_EmployeeInfo_ProjectInfo">
+      <End Role="SalaryInfo" EntitySet="SalaryInfo" />
+      <End Role="EmployeeInfo" EntitySet="EmployeeInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeInfo_ProjectInfo1" Association="Self.FK_EmployeeInfo_ProjectInfo1">
+      <End Role="ProjectInfo" EntitySet="ProjectInfo" />
+      <End Role="EmployeeInfo" EntitySet="EmployeeInfo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище KvadroModelContainer" CdmEntityContainer="KvadroEntities4">
+    <EntitySetMapping Name="CustomerInfo">
+      <EntityTypeMapping TypeName="KvadroModel.CustomerInfo">
+        <MappingFragment StoreEntitySet="CustomerInfo">
+          <ScalarProperty Name="Customer" ColumnName="Customer" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Bank" ColumnName="Bank" />
+          <ScalarProperty Name="Account" ColumnName="Account" />
+          <ScalarProperty Name="INN" ColumnName="INN" />
+          <ScalarProperty Name="AdressCost" ColumnName="AdressCost" />
+          <ScalarProperty Name="FioWorker" ColumnName="FioWorker" />
+          <ScalarProperty Name="PhoneWorker" ColumnName="PhoneWorker" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeInfo">
+      <EntityTypeMapping TypeName="KvadroModel.EmployeeInfo">
+        <MappingFragment StoreEntitySet="EmployeeInfo">
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+          <ScalarProperty Name="Adress" ColumnName="Adress" />
+          <ScalarProperty Name="District" ColumnName="District" />
+          <ScalarProperty Name="Experiance" ColumnName="Experiance" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="Base" ColumnName="Base" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="BonusAll" ColumnName="BonusAll" />
+          <ScalarProperty Name="EmployeeStart" ColumnName="EmployeeStart" />
+          <ScalarProperty Name="EmployeeStop" ColumnName="EmployeeStop" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectInfo">
+      <EntityTypeMapping TypeName="KvadroModel.ProjectInfo">
+        <MappingFragment StoreEntitySet="ProjectInfo">
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="ProjectStart" ColumnName="ProjectStart" />
+          <ScalarProperty Name="ProjectStop" ColumnName="ProjectStop" />
+          <ScalarProperty Name="Chief" ColumnName="Chief" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="INN" ColumnName="INN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalaryInfo">
+      <EntityTypeMapping TypeName="KvadroModel.SalaryInfo">
+        <MappingFragment StoreEntitySet="SalaryInfo">
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+          <ScalarProperty Name="Bonus" ColumnName="Bonus" />
+          <ScalarProperty Name="GrossSalary" ColumnName="GrossSalary" />
+          <ScalarProperty Name="Exempt" ColumnName="Exempt" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

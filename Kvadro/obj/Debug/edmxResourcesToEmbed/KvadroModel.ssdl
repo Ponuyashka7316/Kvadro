@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище KvadroModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CustomerInfo">
+    <Key>
+      <PropertyRef Name="INN" />
+    </Key>
+    <Property Name="Customer" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="text" />
+    <Property Name="Bank" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Account" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="INN" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="AdressCost" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FioWorker" Type="varchar" MaxLength="50" />
+    <Property Name="PhoneWorker" Type="int" />
+  </EntityType>
+  <EntityType Name="EmployeeInfo">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="bigint" Nullable="false" />
+    <Property Name="EmployeeName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Adress" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="District" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Experiance" Type="int" Nullable="false" />
+    <Property Name="Year" Type="date" Nullable="false" />
+    <Property Name="Language" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Base" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Comment" Type="text" Nullable="false" />
+    <Property Name="Picture" Type="image" />
+    <Property Name="BonusAll" Type="int" />
+    <Property Name="EmployeeStart" Type="date" />
+    <Property Name="EmployeeStop" Type="date" />
+    <Property Name="ProjectID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="ProjectInfo">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="bigint" Nullable="false" />
+    <Property Name="ProjectName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProjectStart" Type="date" />
+    <Property Name="ProjectStop" Type="date" />
+    <Property Name="Chief" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Cost" Type="money" />
+    <Property Name="INN" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="SalaryInfo">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="Salary" Type="money" Nullable="false" />
+    <Property Name="Bonus" Type="money" />
+    <Property Name="GrossSalary" Type="money" />
+    <Property Name="Exempt" Type="money" />
+    <Property Name="EmployeeId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_EmployeeInfo_ProjectInfo">
+    <End Role="SalaryInfo" Type="Self.SalaryInfo" Multiplicity="1" />
+    <End Role="EmployeeInfo" Type="Self.EmployeeInfo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="SalaryInfo">
+        <PropertyRef Name="EmployeeId" />
+      </Principal>
+      <Dependent Role="EmployeeInfo">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeInfo_ProjectInfo1">
+    <End Role="ProjectInfo" Type="Self.ProjectInfo" Multiplicity="0..1" />
+    <End Role="EmployeeInfo" Type="Self.EmployeeInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectInfo">
+        <PropertyRef Name="ProjectID" />
+      </Principal>
+      <Dependent Role="EmployeeInfo">
+        <PropertyRef Name="ProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectInfo_CustomerInfo">
+    <End Role="CustomerInfo" Type="Self.CustomerInfo" Multiplicity="0..1" />
+    <End Role="ProjectInfo" Type="Self.ProjectInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerInfo">
+        <PropertyRef Name="INN" />
+      </Principal>
+      <Dependent Role="ProjectInfo">
+        <PropertyRef Name="INN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище KvadroModelContainer">
+    <EntitySet Name="CustomerInfo" EntityType="Self.CustomerInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeInfo" EntityType="Self.EmployeeInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectInfo" EntityType="Self.ProjectInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SalaryInfo" EntityType="Self.SalaryInfo" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_EmployeeInfo_ProjectInfo" Association="Self.FK_EmployeeInfo_ProjectInfo">
+      <End Role="SalaryInfo" EntitySet="SalaryInfo" />
+      <End Role="EmployeeInfo" EntitySet="EmployeeInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeInfo_ProjectInfo1" Association="Self.FK_EmployeeInfo_ProjectInfo1">
+      <End Role="ProjectInfo" EntitySet="ProjectInfo" />
+      <End Role="EmployeeInfo" EntitySet="EmployeeInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectInfo_CustomerInfo" Association="Self.FK_ProjectInfo_CustomerInfo">
+      <End Role="CustomerInfo" EntitySet="CustomerInfo" />
+      <End Role="ProjectInfo" EntitySet="ProjectInfo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

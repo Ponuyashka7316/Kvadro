@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище KvadroModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ProjectInfo">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="int" Nullable="false" />
+    <Property Name="ProjectName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProjectStart" Type="date" />
+    <Property Name="ProjectStop" Type="date" />
+    <Property Name="Chief" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Cost" Type="money" />
+    <Property Name="INN" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityContainer Name="Хранилище KvadroModelContainer">
+    <EntitySet Name="ProjectInfo" EntityType="Self.ProjectInfo" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

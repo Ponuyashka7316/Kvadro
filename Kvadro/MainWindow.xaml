@@ -1,12 +1,82 @@
-﻿<Window x:Class="Kvadro.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Kvadro"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="Kvadro.MainWindow"
+        Title="UnrealWindow" Height="651" Width="1358.5" x:Name="MyWindow"
+        AllowsTransparency="True" Background="Transparent" WindowStyle="None">
+    <Grid Margin="0,0,0,-260">
+        <Border Width="auto" BorderBrush="LimeGreen" BorderThickness="2"
+                CornerRadius="0,30,0,30" AllowDrop="True" Margin="0,0,60,282">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="22" Opacity="0.5" Direction="318"/>
+            </Border.Effect>
+            <Border.Background>
+                <LinearGradientBrush>
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStopCollection>
+                            <GradientStop Color="#e7ebf7" Offset="0.0"/>
+                            <GradientStop Color="#cee3ff" Offset="0.5"/>
+                        </GradientStopCollection>
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+
+                <TextBlock Text="      Kvadro App" Padding="5" Drop="TextBlock_Drop" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown"/>
+                <Button x:Name="cmdClose" HorizontalAlignment="Right" Click="cmdClose_Click" Margin="500,5,30,0" Content="x" Cursor="UpArrow"
+                                
+                                />
+                <Grid Grid.Row="1" Background="#B5CBEF" AutomationProperties.IsRequiredForForm="True">
+                    <TextBlock VerticalAlignment="Center" FontSize="18" 
+                               Foreground="White" HorizontalAlignment="Center"><Run Text="This is listBox: "/></TextBlock>
+                    <!--<Rectangle x:Name="mouse" Grid.RowSpan="3" Width="5" VerticalAlignment="Stretch" HorizontalAlignment="Right" Cursor="SizeWE" Fill="Transparent" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown" MouseLeftButtonUp="Rectangle_MouseLeftButtonUp" MouseMove="Rectangle_MouseMove"/> -->
+                    <ComboBox x:Name="Par_Types_Cmb" HorizontalAlignment="Left" Margin="1115,33,0,0" VerticalAlignment="Top" Width="169" SelectionChanged="ComboBox_SelectionChanged" FontFamily="Times New Roman" FontSize="14" SelectedIndex="1">
+                        <System:String>Parallel output</System:String>
+                        <System:String>Standart output</System:String>
+                        <System:String>Parallel with order output</System:String>
+                    </ComboBox>
+                    <Button x:Name="Output_Btn" Content="GET DATA" HorizontalAlignment="Left" Margin="1169,63,0,0" VerticalAlignment="Top" Width="115" Click="Button_Click" FontFamily="Times New Roman" FontSize="14" Height="29"/>
+                    <ListBox x:Name="ListOut" HorizontalAlignment="Left" Margin="10,306,0,0" VerticalAlignment="Top" Width="1096" Height="236"/>
+                    <TextBox x:Name="TextOut" HorizontalAlignment="Left" Margin="10,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="1096" FontFamily="Times New Roman" FontSize="14" Height="236" AcceptsReturn="True" AcceptsTab="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True"/>
+                    <TextBlock x:Name="Timer2" HorizontalAlignment="Left" Margin="1204,164,0,0" TextWrapping="Wrap" Text="_________" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="16" RenderTransformOrigin="-1.214,-3.354"/>
+                    <TextBlock x:Name="Timer1" HorizontalAlignment="Left" Margin="1204,126,0,0" TextWrapping="Wrap" Text="_________" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="16"/>
+                    <Button x:Name="Clear" Content="textBox Clear" HorizontalAlignment="Left" Margin="1169,282,0,0" VerticalAlignment="Top" Width="115" FontFamily="Times New Roman" FontSize="14" Click="Clear_Click"/>
+                    <Button Content="listBox Clear" HorizontalAlignment="Left" Margin="1169,332,0,0" VerticalAlignment="Top" Width="115" FontFamily="Times New Roman" FontSize="14" Click="Button_Click_1"/>
+                    <ComboBox x:Name="TypeChoose" HorizontalAlignment="Left" Margin="1115,8,0,0" VerticalAlignment="Top" Width="169" SelectedIndex="0" FontFamily="Times New Roman" FontSize="14">
+                        <System:String>textBox</System:String>
+                        <System:String>listBox</System:String>
+                    </ComboBox>
+                    <TextBlock HorizontalAlignment="Left" Margin="972,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="16"><Run Text="Change input form:"/><LineBreak/><Run/></TextBlock>
+                    <TextBlock x:Name="Count" HorizontalAlignment="Left" Margin="1218,261,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="14"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="1163,248,0,0" TextWrapping="Wrap" Text="Records outputted:" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="14"/>
+                    <TextBlock x:Name="Timer1_Copy" HorizontalAlignment="Left" Margin="1121,126,0,0" TextWrapping="Wrap" Text="для textBox" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="16"/>
+                    <TextBlock x:Name="Timer2_Copy" HorizontalAlignment="Left" Margin="1121,164,0,0" TextWrapping="Wrap" Text="для listBox" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="16"/>
+                    <GroupBox Header="Lead time:" HorizontalAlignment="Left" Height="100" Margin="1116,97,0,0" VerticalAlignment="Top" Width="169" FontFamily="Times New Roman" FontSize="16" Focusable="True" BorderBrush="#FF085C8F"/>
+                    <GridSplitter HorizontalAlignment="Left" Height="1" Margin="1106,571,0,0" VerticalAlignment="Top" Width="0"/>
+                    <TextBlock VerticalAlignment="Center" FontSize="18" 
+                        Foreground="White" HorizontalAlignment="Center" Margin="591,-1,590,549"><Run Text="This is textBox:"/></TextBlock>
+                    <GroupBox Header="" HorizontalAlignment="Left" Height="132" Margin="1118,233,0,0" VerticalAlignment="Top" Width="173" FontFamily="Times New Roman"/>
+                    <GroupBox Header="" HorizontalAlignment="Left" Height="103" Margin="1111,-6,0,0" VerticalAlignment="Top" Width="180"/>
+                    <Button Content="ENTITY" Height="110" HorizontalAlignment="Left" Margin="1124,432,0,0" Name="Button1" VerticalAlignment="Top" Width="170" Click="Button1_Click" FontFamily="Showcard Gothic" FontSize="36">
+                        <Button.Background>
+                            <ImageBrush ImageSource="Resources/images.jpg" />
+                        </Button.Background>
+                    </Button>
+                </Grid>
+                <TextBlock Text="Odessa 2017" Padding="5" Grid.Row="2" HorizontalAlignment="Center" FontFamily="Times New Roman" FontSize="14"/>
+                <Image HorizontalAlignment="Left" Height="20" Margin="2,0,0,4" VerticalAlignment="Bottom" Width="19" Source="Resources/MainImage.bmp" />
+            </Grid>
+        </Border>
+        <GroupBox Header="" HorizontalAlignment="Left" Height="258" Margin="6,42,0,0" VerticalAlignment="Top" Width="1110">
+            <GroupBox Header="" HorizontalAlignment="Left" Height="259" Margin="-6,261,-5,-284" VerticalAlignment="Top" Width="1109"/>
+        </GroupBox>
+        <Image x:Name="mainImg" HorizontalAlignment="Left" Height="568" Margin="0,31,0,0" VerticalAlignment="Top" Width="1298" Source="Resources/images.jpg" Stretch="Fill" IsHitTestVisible="True" Opacity="0.22" Visibility="Collapsed"/>
     </Grid>
 </Window>
+    

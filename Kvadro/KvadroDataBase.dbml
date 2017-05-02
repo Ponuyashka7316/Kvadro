@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Kvadro" Class="KvadroDataBaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=SERGEY-PC;Initial Catalog=Kvadro;Integrated Security=True" SettingsObjectName="Kvadro.Properties.Settings" SettingsPropertyName="KvadroConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.CustomerInfo" Member="CustomerInfo">
+    <Type Name="CustomerInfo">
+      <Column Name="Customer" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Phone" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Bank" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Account" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="INN" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AdressCost" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FioWorker" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PhoneWorker" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CustomerInfo_ProjectInfo" Member="ProjectInfo" ThisKey="INN" OtherKey="INN" Type="ProjectInfo" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EmployeeInfo" Member="EmployeeInfo">
+    <Type Name="EmployeeInfo">
+      <Column Name="EmployeeID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EmployeeName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Adress" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="District" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Experiance" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Year" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Language" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Base" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Comment" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Picture" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="BonusAll" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EmployeeStart" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="EmployeeStop" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ProjectID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="ProjectInfo_EmployeeInfo" Member="ProjectInfo" ThisKey="ProjectID" OtherKey="ProjectID" Type="ProjectInfo" IsForeignKey="true" />
+      <Association Name="SalaryInfo_EmployeeInfo" Member="SalaryInfo" ThisKey="EmployeeID" OtherKey="EmployeeId" Type="SalaryInfo" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProjectInfo" Member="ProjectInfo">
+    <Type Name="ProjectInfo">
+      <Column Name="ProjectID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ProjectName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectStart" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ProjectStop" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Chief" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Cost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="INN" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Association Name="ProjectInfo_EmployeeInfo" Member="EmployeeInfo" ThisKey="ProjectID" OtherKey="ProjectID" Type="EmployeeInfo" />
+      <Association Name="CustomerInfo_ProjectInfo" Member="CustomerInfo" ThisKey="INN" OtherKey="INN" Type="CustomerInfo" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SalaryInfo" Member="SalaryInfo">
+    <Type Name="SalaryInfo">
+      <Column Name="Salary" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Bonus" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="GrossSalary" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Exempt" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="EmployeeId" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="SalaryInfo_EmployeeInfo" Member="EmployeeInfo" ThisKey="EmployeeId" OtherKey="EmployeeID" Type="EmployeeInfo" Cardinality="One" />
+    </Type>
+  </Table>
+</Database>
