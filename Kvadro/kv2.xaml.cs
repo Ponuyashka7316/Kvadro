@@ -31,7 +31,7 @@ namespace Kvadro
         {
             InitializeComponent();
             //DataContext = this;
-            db = new KvadroEntities6();
+
             //ObjectQuery<ProjectInfo> products = db.ProjectInfos;
 
             //var query =
@@ -42,6 +42,7 @@ namespace Kvadro
             // kvadroGrid.ItemsSource = db.ProjectInfos.Local.ToList();
             //this.Closing += MyWindow_Closing;
             //db.ProjectInfos.Load();
+            db = new KvadroEntities6();
             var data = from r in db.ProjectInfo select r;
             kvadroGrid.ItemsSource = data.ToList();
 
@@ -115,7 +116,7 @@ namespace Kvadro
                 prj.ProjectStop = Convert.ToDateTime(stop.Text);
                 prj.Chief = chief.Text;
                 prj.Cost = Convert.ToDecimal(cost.Text);
-               // prj.INN = inn.Text;
+                prj.INN = ComboINN.SelectedItem.ToString();
             }
             catch (Exception ex)
             {

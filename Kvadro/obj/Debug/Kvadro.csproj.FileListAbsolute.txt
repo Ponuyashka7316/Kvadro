@@ -21,7 +21,6 @@ C:\Users\Сергей\documents\visual studio 2017\Projects\Kvadro\Kvadro\obj\De
 C:\Users\Сергей\documents\visual studio 2017\Projects\Kvadro\Kvadro\obj\Debug\Kvadro_Content.g.cs
 C:\Users\Сергей\documents\visual studio 2017\Projects\Kvadro\Kvadro\bin\Debug\ru\EntityFramework.resources.dll
 C:\Users\Сергей\documents\visual studio 2017\Projects\Kvadro\Kvadro\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\Kvadro.csprojResolveAssemblyReference.cache
 C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\MainWindow.baml
 C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\kv2.g.cs
 C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\MainWindow.g.cs
@@ -43,3 +42,6 @@ C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvad
 C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\Kvadro.g.resources
 C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\Kvadro.Properties.Resources.resources
 C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\Kvadro.csproj.GenerateResource.Cache
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\kv3.g.cs
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\kv3.baml
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\Kvadro.csprojResolveAssemblyReference.cache

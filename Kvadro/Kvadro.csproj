@@ -71,6 +71,9 @@
     <Compile Include="EmployeeInfo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="kv3.xaml.cs">
+      <DependentUpon>kv3.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -83,6 +86,10 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Page Include="kv2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="kv3.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="890aad736f6b4546b8602f8b19115c70" Name="Diagram1">
+      <Diagram DiagramId="890aad736f6b4546b8602f8b19115c70" Name="Diagram1" ZoomLevel="93">
         <EntityTypeShape EntityType="KvadroModel.CustomerInfo" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="KvadroModel.EmployeeInfo" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="KvadroModel.ProjectInfo" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="KvadroModel.SalaryInfo" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KvadroModel.SalaryInfo" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
         <AssociationConnector Association="KvadroModel.FK_ProjectInfo_CustomerInfo" ManuallyRouted="false" />
         <AssociationConnector Association="KvadroModel.FK_EmployeeInfo_ProjectInfo" ManuallyRouted="false" />
         <AssociationConnector Association="KvadroModel.FK_EmployeeInfo_ProjectInfo1" ManuallyRouted="false" />

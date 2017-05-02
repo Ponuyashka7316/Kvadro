@@ -389,7 +389,7 @@ namespace Kvadro
 		
 		private string _Comment;
 		
-		//private System.Data.Linq.Binary _Picture;
+		private System.Data.Linq.Binary _Picture;
 		
 		private System.Nullable<int> _BonusAll;
 		
@@ -425,8 +425,8 @@ namespace Kvadro
     partial void OnBaseChanged();
     partial void OnCommentChanging(string value);
     partial void OnCommentChanged();
-    //partial void OnPictureChanging(System.Data.Linq.Binary value);
-    //partial void OnPictureChanged();
+    partial void OnPictureChanging(System.Data.Linq.Binary value);
+    partial void OnPictureChanged();
     partial void OnBonusAllChanging(System.Nullable<int> value);
     partial void OnBonusAllChanged();
     partial void OnEmployeeStartChanging(System.Nullable<System.DateTime> value);
@@ -628,25 +628,25 @@ namespace Kvadro
 			}
 		}
 		
-		//[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Picture", DbType="Image", UpdateCheck=UpdateCheck.Never)]
-		//public System.Data.Linq.Binary Picture
-		//{
-		//	get
-		//	{
-		//		return this._Picture;
-		//	}
-		//	set
-		//	{
-		//		if ((this._Picture != value))
-		//		{
-		//			this.OnPictureChanging(value);
-		//			this.SendPropertyChanging();
-		//			this._Picture = value;
-		//			this.SendPropertyChanged("Picture");
-		//			this.OnPictureChanged();
-		//		}
-		//	}
-		//}
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Picture", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Picture
+		{
+			get
+			{
+				return this._Picture;
+			}
+			set
+			{
+				if ((this._Picture != value))
+				{
+					this.OnPictureChanging(value);
+					this.SendPropertyChanging();
+					this._Picture = value;
+					this.SendPropertyChanged("Picture");
+					this.OnPictureChanged();
+				}
+			}
+		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BonusAll", DbType="Int")]
 		public System.Nullable<int> BonusAll

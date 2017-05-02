@@ -63,12 +63,12 @@
                         Foreground="White" HorizontalAlignment="Center" Margin="591,-1,590,549"><Run Text="This is textBox:"/></TextBlock>
                     <GroupBox Header="" HorizontalAlignment="Left" Height="132" Margin="1118,233,0,0" VerticalAlignment="Top" Width="173" FontFamily="Times New Roman"/>
                     <GroupBox Header="" HorizontalAlignment="Left" Height="103" Margin="1111,-6,0,0" VerticalAlignment="Top" Width="180"/>
-                    <Button Content="ENTITY" Height="110" HorizontalAlignment="Left" Margin="1124,432,0,0" Name="Button1" VerticalAlignment="Top" Width="170" Click="Button1_Click" FontFamily="Showcard Gothic" FontSize="36">
+                    <Button Content="Project" Height="75" HorizontalAlignment="Left" Margin="1121,456,0,0" x:Name="Button1_Copy" VerticalAlignment="Top" Width="170" Click="Button1_Click" FontFamily="Showcard Gothic" FontSize="36">
                         <Button.Background>
                             <ImageBrush ImageSource="Resources/images.jpg" />
                         </Button.Background>
                     </Button>
-                    <Button Content="ENTITY" Height="46" HorizontalAlignment="Left" Margin="1121,370,0,0" x:Name="Button1_Copy" VerticalAlignment="Top" Width="170" Click="Button1_Click" FontFamily="Showcard Gothic" FontSize="36">
+                    <Button Content="Customers" Height="76" HorizontalAlignment="Left" Margin="1121,359,0,0" x:Name="Button1_Copy1" VerticalAlignment="Top" Width="170" Click="Button1_Copy1_Click" FontFamily="Showcard Gothic" FontSize="24">
                         <Button.Background>
                             <ImageBrush ImageSource="Resources/images.jpg" />
                         </Button.Background>

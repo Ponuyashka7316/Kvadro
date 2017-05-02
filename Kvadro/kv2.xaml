@@ -54,7 +54,7 @@
                         <StackPanel HorizontalAlignment="Center"  Grid.Row="1" Orientation="Horizontal"/>
                         <Button Content="Update" HorizontalAlignment="Left" Margin="10,214,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
                         <Button x:Name="Delete" Content="Delete" HorizontalAlignment="Left" Margin="90,214,0,0" Width="75" Height="Auto" Click="Delete_Click"/>
-                        <Button x:Name="Exit" Content="Exit" HorizontalAlignment="Left" Margin="829,214,0,0" VerticalAlignment="Top" Width="75" Click="Exit_Click"/>
+                        <Button x:Name="Exit" Content="Exit" HorizontalAlignment="Left" Margin="598,214,0,0" VerticalAlignment="Top" Width="75" Click="Exit_Click"/>
                         <TextBox x:Name="id" HorizontalAlignment="Left" Height="23" Margin="812,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                         <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" Margin="812,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                         <TextBox x:Name="start" HorizontalAlignment="Left" Height="23" Margin="812,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
@@ -72,7 +72,7 @@
 
                     </Grid>
                     <TextBlock VerticalAlignment="Center" FontSize="18" 
-                               Foreground="White" HorizontalAlignment="Center">My Content</TextBlock>
+                               Foreground="White" HorizontalAlignment="Center"> </TextBlock>
                     <Grid HorizontalAlignment="Left" Height="205" Margin="685,10,0,0" VerticalAlignment="Top" Width="103" MinWidth="2" ShowGridLines="True" Background="#26000000">
                         <ComboBox x:Name="ComboINN" HorizontalAlignment="Left" Height="27" Margin="127,168,-144,0" VerticalAlignment="Top" Width="120"/>
                     </Grid>

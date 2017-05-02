@@ -237,5 +237,21 @@ namespace Kvadro
             f.ShowDialog();
             this.Show();
         }
+
+        private void Button1_Copy1_Click(object sender, RoutedEventArgs e)
+        {
+            kv3 f = new kv3();
+            this.Hide();
+            f.ShowDialog();
+            this.Show();
+        }
+
+        //private void Button1_Click_1(object sender, RoutedEventArgs e)
+        //{
+        //    Kv3 f = new Kv3();
+        //    this.Hide();
+        //    f.ShowDialog();
+        //    this.Show();
+        //}
     }
 }
