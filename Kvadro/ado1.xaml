@@ -1,0 +1,88 @@
+﻿<Window x:Class="Kvadro.ado1"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kvadro"
+        Title="UnrealWindow" Height="300" Width="941" x:Name="MyWindow"
+        AllowsTransparency="True" Background="Transparent" WindowStyle="None" Closing="MyWindow_Closing">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="20 8 20 8" />
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Height" Value="30" />
+        </Style>
+    </Window.Resources>
+    <Grid Margin="0,0,121,0">
+        <Border Width="auto" Height="auto" BorderBrush="LimeGreen" BorderThickness="2"
+                CornerRadius="0,30,0,30" Margin="0,0,-119,0">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientBrush.GradientStops>
+                        <GradientStopCollection>
+                            <GradientStop Color="#e7ebf7" Offset="0.0"></GradientStop>
+                            <GradientStop Color="#cee3ff" Offset="0.5"></GradientStop>
+                        </GradientStopCollection>
+                    </GradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid Margin="0,0,0,-2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Kvadro App" Padding="5" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown"></TextBlock>
+                <Grid Grid.Row="1" Background="#B5CBEF">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <DataGrid  ItemsSource="{Binding UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" x:Name="kvadroGrid" Margin="0,0,262,30" CurrentCellChanged="kvadroGrid_CurrentCellChanged">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Path=EmployeeID}" Header="EmployeeID" Width="100" PastingCellClipboardContent="DataGridTextColumn_PastingCellClipboardContent"/>
+                                <DataGridTextColumn Binding="{Binding Path=EmployeeName}" Header="EmployeeName" Width="100"/>
+                                <DataGridTextColumn Binding="{Binding Path=Adress}" Header="Adress" Width="110"/>
+                                <DataGridTextColumn Binding="{Binding Path=District}" Header="District" Width="70"/>
+                                <DataGridTextColumn Binding="{Binding Path=Experiance}" Header="Experiance" Width="100"/>
+                                <DataGridTextColumn Binding="{Binding Path=Year}" Header="Year" Width="25"/>
+                                <DataGridTextColumn Binding="{Binding Path=Language}" Header="Language" Width="100"/>
+                                <DataGridTextColumn Binding="{Binding Path=Base}" Header="Base" Width="100"/>
+                                <DataGridTextColumn Binding="{Binding Path=Comment}" Header="Comment" Width="100"/>
+                                <DataGridTextColumn Binding="{Binding Path=BonusAll}" Header="BonusAll" Width="100"/>
+                                <DataGridTextColumn Binding="{Binding Path=ProjectID}" Header="ProjectID" Width="100"/>
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel HorizontalAlignment="Center"  Grid.Row="1" Orientation="Horizontal"/>
+                        <Button Content="Update" HorizontalAlignment="Left" Margin="10,214,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+                        <Button x:Name="Delete" Content="Delete" HorizontalAlignment="Left" Margin="90,214,0,0" Width="75" Height="Auto" Click="Delete_Click"/>
+                        <Button x:Name="Exit" Content="Exit" HorizontalAlignment="Left" Margin="598,214,0,0" VerticalAlignment="Top" Width="75" Click="Exit_Click"/>
+                        <Button x:Name="AddBtn" Content="Add record" HorizontalAlignment="Left" Margin="170,214,0,0" VerticalAlignment="Top" Width="75" Click="AddBtn_Click"/>
+                        <TextBox x:Name="lang" HorizontalAlignment="Left" Height="23" Margin="805,2,0,0" TextWrapping="Wrap" Text="language" VerticalAlignment="Top" Width="120"/>
+                        <TextBox x:Name="Base" HorizontalAlignment="Left" Height="23" Margin="805,30,0,0" TextWrapping="Wrap" Text="Base" VerticalAlignment="Top" Width="120"/>
+                        <TextBox x:Name="comment" HorizontalAlignment="Left" Height="23" Margin="805,58,0,0" TextWrapping="Wrap" Text="comment" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
+                        <TextBox x:Name="BonusAll" HorizontalAlignment="Left" Height="23" Margin="805,86,0,0" TextWrapping="Wrap" Text="BonusAll" VerticalAlignment="Top" Width="120"/>
+                        <TextBox x:Name="ProjID" HorizontalAlignment="Left" Height="23" Margin="805,114,0,0" TextWrapping="Wrap" Text="ProjID" VerticalAlignment="Top" Width="120"/>
+                        <TextBox x:Name="EmpID" HorizontalAlignment="Left" Height="23" Margin="680,2,0,0" TextWrapping="Wrap" Text="EmpID" VerticalAlignment="Top" Width="120"/>
+                        <TextBox x:Name="Name" HorizontalAlignment="Left" Height="23" Margin="680,30,0,0" TextWrapping="Wrap" Text="name" VerticalAlignment="Top" Width="120"/>
+                        <TextBox x:Name="adress" HorizontalAlignment="Left" Height="23" Margin="680,58,0,0" TextWrapping="Wrap" Text="adress" VerticalAlignment="Top" Width="120"/>
+                        <TextBox x:Name="district" HorizontalAlignment="Left" Height="23" Margin="680,86,0,0" TextWrapping="Wrap" Text="district" VerticalAlignment="Top" Width="120"/>
+                        <TextBox x:Name="exp" HorizontalAlignment="Left" Height="23" Margin="680,114,0,0" TextWrapping="Wrap" Text="exp" VerticalAlignment="Top" Width="120"/>
+                        <TextBox x:Name="year" HorizontalAlignment="Left" Height="23" Margin="680,142,0,0" TextWrapping="Wrap" Text="year" VerticalAlignment="Top" Width="120"/>
+                        <Button Content="Parallel output" HorizontalAlignment="Left" Margin="680,170,0,0" VerticalAlignment="Top" Width="102" Height="24" Click="Button_Click_1"/>
+                        <Button Content="Listbox Parallel output" HorizontalAlignment="Left" Margin="787,170,0,0" VerticalAlignment="Top" Width="138" Height="24" Click="Button_Click_2"/>
+                        <Button Content="Load XML" HorizontalAlignment="Left" Margin="680,206,0,0" VerticalAlignment="Top" Width="102" Click="Button_Click_3"/>
+
+                    </Grid>
+                    <TextBlock VerticalAlignment="Center" FontSize="18" 
+                               Foreground="White" HorizontalAlignment="Center"></TextBlock>
+                </Grid>
+                <TextBlock Text="Gurin, 2017" Padding="5" Grid.Row="2" HorizontalAlignment="Center"></TextBlock>
+            </Grid>
+        </Border>
+    </Grid>
+
+</Window>

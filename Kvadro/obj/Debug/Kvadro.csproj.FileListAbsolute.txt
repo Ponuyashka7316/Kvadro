@@ -45,3 +45,9 @@ C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvad
 C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\kv3.g.cs
 C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\kv3.baml
 C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\Kvadro.csprojResolveAssemblyReference.cache
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\ado1.g.cs
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\ado1.baml
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\textBoxWindow.g.cs
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\textBoxWindow.baml
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\listBoxWindow.g.cs
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\listBoxWindow.baml

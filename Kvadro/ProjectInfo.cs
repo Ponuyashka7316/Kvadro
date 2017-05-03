@@ -17,6 +17,7 @@ namespace Kvadro
     //    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
     //    public ProjectInfo()
     //    {
+    //        this.Programming_Languages = new HashSet<Programming_Languages>();
     //        this.EmployeeInfo = new HashSet<EmployeeInfo>();
     //    }
     
@@ -29,6 +30,8 @@ namespace Kvadro
     //    public string INN { get; set; }
     
     //    public virtual CustomerInfo CustomerInfo { get; set; }
+    //    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    //    public virtual ICollection<Programming_Languages> Programming_Languages { get; set; }
     //    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     //    public virtual ICollection<EmployeeInfo> EmployeeInfo { get; set; }
     //}

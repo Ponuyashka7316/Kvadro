@@ -27,9 +27,24 @@
     <Property Name="Base" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Comment" Type="text" Nullable="false" />
     <Property Name="BonusAll" Type="int" />
-    <Property Name="EmployeeStart" Type="date" />
-    <Property Name="EmployeeStop" Type="date" />
     <Property Name="ProjectID" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Participation in project">
+    <Key>
+      <PropertyRef Name="EmpId" />
+    </Key>
+    <Property Name="ProjId" Type="bigint" />
+    <Property Name="EmpId" Type="bigint" Nullable="false" />
+    <Property Name="StartDate" Type="date" />
+    <Property Name="StopDate" Type="date" />
+  </EntityType>
+  <EntityType Name="Programming Languages">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" Nullable="false" />
+    <Property Name="name" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="ProjectId" Type="bigint" Nullable="false" />
   </EntityType>
   <EntityType Name="ProjectInfo">
     <Key>
@@ -53,7 +68,29 @@
     <Property Name="Exempt" Type="money" />
     <Property Name="EmployeeId" Type="bigint" Nullable="false" />
   </EntityType>
-  <Association Name="FK_EmployeeInfo_ProjectInfo">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_EmployeeInfo_ProjectInfo1">
+    <End Role="ProjectInfo" Type="Self.ProjectInfo" Multiplicity="0..1" />
+    <End Role="EmployeeInfo" Type="Self.EmployeeInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectInfo">
+        <PropertyRef Name="ProjectID" />
+      </Principal>
+      <Dependent Role="EmployeeInfo">
+        <PropertyRef Name="ProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeInfo_SalaryInfo">
     <End Role="SalaryInfo" Type="Self.SalaryInfo" Multiplicity="1" />
     <End Role="EmployeeInfo" Type="Self.EmployeeInfo" Multiplicity="0..1" />
     <ReferentialConstraint>
@@ -65,15 +102,27 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_EmployeeInfo_ProjectInfo1">
-    <End Role="ProjectInfo" Type="Self.ProjectInfo" Multiplicity="0..1" />
-    <End Role="EmployeeInfo" Type="Self.EmployeeInfo" Multiplicity="*" />
+  <Association Name="FK_Participation in project_EmployeeInfo">
+    <End Role="EmployeeInfo" Type="Self.EmployeeInfo" Multiplicity="1" />
+    <End Role="Participation in project" Type="Self.Participation in project" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="EmployeeInfo">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="Participation in project">
+        <PropertyRef Name="EmpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Programming Languages_ProjectInfo">
+    <End Role="ProjectInfo" Type="Self.ProjectInfo" Multiplicity="1" />
+    <End Role="Programming Languages" Type="Self.Programming Languages" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ProjectInfo">
         <PropertyRef Name="ProjectID" />
       </Principal>
-      <Dependent Role="EmployeeInfo">
-        <PropertyRef Name="ProjectID" />
+      <Dependent Role="Programming Languages">
+        <PropertyRef Name="ProjectId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -92,15 +141,26 @@
   <EntityContainer Name="Хранилище KvadroModelContainer">
     <EntitySet Name="CustomerInfo" EntityType="Self.CustomerInfo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EmployeeInfo" EntityType="Self.EmployeeInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Participation in project" EntityType="Self.Participation in project" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Programming Languages" EntityType="Self.Programming Languages" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProjectInfo" EntityType="Self.ProjectInfo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SalaryInfo" EntityType="Self.SalaryInfo" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_EmployeeInfo_ProjectInfo" Association="Self.FK_EmployeeInfo_ProjectInfo">
-      <End Role="SalaryInfo" EntitySet="SalaryInfo" />
-      <End Role="EmployeeInfo" EntitySet="EmployeeInfo" />
-    </AssociationSet>
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_EmployeeInfo_ProjectInfo1" Association="Self.FK_EmployeeInfo_ProjectInfo1">
       <End Role="ProjectInfo" EntitySet="ProjectInfo" />
       <End Role="EmployeeInfo" EntitySet="EmployeeInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeInfo_SalaryInfo" Association="Self.FK_EmployeeInfo_SalaryInfo">
+      <End Role="SalaryInfo" EntitySet="SalaryInfo" />
+      <End Role="EmployeeInfo" EntitySet="EmployeeInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Participation in project_EmployeeInfo" Association="Self.FK_Participation in project_EmployeeInfo">
+      <End Role="EmployeeInfo" EntitySet="EmployeeInfo" />
+      <End Role="Participation in project" EntitySet="Participation in project" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Programming Languages_ProjectInfo" Association="Self.FK_Programming Languages_ProjectInfo">
+      <End Role="ProjectInfo" EntitySet="ProjectInfo" />
+      <End Role="Programming Languages" EntitySet="Programming Languages" />
     </AssociationSet>
     <AssociationSet Name="FK_ProjectInfo_CustomerInfo" Association="Self.FK_ProjectInfo_CustomerInfo">
       <End Role="CustomerInfo" EntitySet="CustomerInfo" />

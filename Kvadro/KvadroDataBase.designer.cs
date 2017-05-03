@@ -33,9 +33,6 @@ namespace Kvadro
     partial void InsertCustomerInfo(CustomerInfo instance);
     partial void UpdateCustomerInfo(CustomerInfo instance);
     partial void DeleteCustomerInfo(CustomerInfo instance);
-    partial void InsertEmployeeInfo(EmployeeInfo instance);
-    partial void UpdateEmployeeInfo(EmployeeInfo instance);
-    partial void DeleteEmployeeInfo(EmployeeInfo instance);
     partial void InsertProjectInfo(ProjectInfo instance);
     partial void UpdateProjectInfo(ProjectInfo instance);
     partial void DeleteProjectInfo(ProjectInfo instance);
@@ -48,6 +45,9 @@ namespace Kvadro
     partial void InsertProgramming_Languages(Programming_Languages instance);
     partial void UpdateProgramming_Languages(Programming_Languages instance);
     partial void DeleteProgramming_Languages(Programming_Languages instance);
+    partial void InsertEmployeeInfo(EmployeeInfo instance);
+    partial void UpdateEmployeeInfo(EmployeeInfo instance);
+    partial void DeleteEmployeeInfo(EmployeeInfo instance);
     #endregion
 		
 		public KvadroDataBaseDataContext() : 
@@ -88,14 +88,6 @@ namespace Kvadro
 			}
 		}
 		
-		public System.Data.Linq.Table<EmployeeInfo> EmployeeInfo
-		{
-			get
-			{
-				return this.GetTable<EmployeeInfo>();
-			}
-		}
-		
 		public System.Data.Linq.Table<ProjectInfo> ProjectInfo
 		{
 			get
@@ -125,6 +117,14 @@ namespace Kvadro
 			get
 			{
 				return this.GetTable<Programming_Languages>();
+			}
+		}
+		
+		public System.Data.Linq.Table<EmployeeInfo> EmployeeInfo
+		{
+			get
+			{
+				return this.GetTable<EmployeeInfo>();
 			}
 		}
 	}
@@ -387,494 +387,6 @@ namespace Kvadro
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.EmployeeInfo")]
-	public partial class EmployeeInfo : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private long _EmployeeID;
-		
-		private string _EmployeeName;
-		
-		private string _Adress;
-		
-		private string _District;
-		
-		private int _Experiance;
-		
-		private System.DateTime _Year;
-		
-		private string _Language;
-		
-		private string _Base;
-		
-		private string _Comment;
-		
-		private System.Data.Linq.Binary _Picture;
-		
-		private System.Nullable<int> _BonusAll;
-		
-		private System.Nullable<System.DateTime> _EmployeeStart;
-		
-		private System.Nullable<System.DateTime> _EmployeeStop;
-		
-		private System.Nullable<long> _ProjectID;
-		
-		private EntityRef<Participation_in_project> _Participation_in_project;
-		
-		private EntityRef<ProjectInfo> _ProjectInfo;
-		
-		private EntityRef<SalaryInfo> _SalaryInfo;
-		
-    #region Определения метода расширяемости
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnEmployeeIDChanging(long value);
-    partial void OnEmployeeIDChanged();
-    partial void OnEmployeeNameChanging(string value);
-    partial void OnEmployeeNameChanged();
-    partial void OnAdressChanging(string value);
-    partial void OnAdressChanged();
-    partial void OnDistrictChanging(string value);
-    partial void OnDistrictChanged();
-    partial void OnExperianceChanging(int value);
-    partial void OnExperianceChanged();
-    partial void OnYearChanging(System.DateTime value);
-    partial void OnYearChanged();
-    partial void OnLanguageChanging(string value);
-    partial void OnLanguageChanged();
-    partial void OnBaseChanging(string value);
-    partial void OnBaseChanged();
-    partial void OnCommentChanging(string value);
-    partial void OnCommentChanged();
-    partial void OnPictureChanging(System.Data.Linq.Binary value);
-    partial void OnPictureChanged();
-    partial void OnBonusAllChanging(System.Nullable<int> value);
-    partial void OnBonusAllChanged();
-    partial void OnEmployeeStartChanging(System.Nullable<System.DateTime> value);
-    partial void OnEmployeeStartChanged();
-    partial void OnEmployeeStopChanging(System.Nullable<System.DateTime> value);
-    partial void OnEmployeeStopChanged();
-    partial void OnProjectIDChanging(System.Nullable<long> value);
-    partial void OnProjectIDChanged();
-    #endregion
-		
-		public EmployeeInfo()
-		{
-			this._Participation_in_project = default(EntityRef<Participation_in_project>);
-			this._ProjectInfo = default(EntityRef<ProjectInfo>);
-			this._SalaryInfo = default(EntityRef<SalaryInfo>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeID", DbType="BigInt NOT NULL", IsPrimaryKey=true)]
-		public long EmployeeID
-		{
-			get
-			{
-				return this._EmployeeID;
-			}
-			set
-			{
-				if ((this._EmployeeID != value))
-				{
-					if (this._SalaryInfo.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnEmployeeIDChanging(value);
-					this.SendPropertyChanging();
-					this._EmployeeID = value;
-					this.SendPropertyChanged("EmployeeID");
-					this.OnEmployeeIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeName", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string EmployeeName
-		{
-			get
-			{
-				return this._EmployeeName;
-			}
-			set
-			{
-				if ((this._EmployeeName != value))
-				{
-					this.OnEmployeeNameChanging(value);
-					this.SendPropertyChanging();
-					this._EmployeeName = value;
-					this.SendPropertyChanged("EmployeeName");
-					this.OnEmployeeNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Adress", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Adress
-		{
-			get
-			{
-				return this._Adress;
-			}
-			set
-			{
-				if ((this._Adress != value))
-				{
-					this.OnAdressChanging(value);
-					this.SendPropertyChanging();
-					this._Adress = value;
-					this.SendPropertyChanged("Adress");
-					this.OnAdressChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_District", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string District
-		{
-			get
-			{
-				return this._District;
-			}
-			set
-			{
-				if ((this._District != value))
-				{
-					this.OnDistrictChanging(value);
-					this.SendPropertyChanging();
-					this._District = value;
-					this.SendPropertyChanged("District");
-					this.OnDistrictChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Experiance", DbType="Int NOT NULL")]
-		public int Experiance
-		{
-			get
-			{
-				return this._Experiance;
-			}
-			set
-			{
-				if ((this._Experiance != value))
-				{
-					this.OnExperianceChanging(value);
-					this.SendPropertyChanging();
-					this._Experiance = value;
-					this.SendPropertyChanged("Experiance");
-					this.OnExperianceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Year", DbType="Date NOT NULL")]
-		public System.DateTime Year
-		{
-			get
-			{
-				return this._Year;
-			}
-			set
-			{
-				if ((this._Year != value))
-				{
-					this.OnYearChanging(value);
-					this.SendPropertyChanging();
-					this._Year = value;
-					this.SendPropertyChanged("Year");
-					this.OnYearChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Language", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Language
-		{
-			get
-			{
-				return this._Language;
-			}
-			set
-			{
-				if ((this._Language != value))
-				{
-					this.OnLanguageChanging(value);
-					this.SendPropertyChanging();
-					this._Language = value;
-					this.SendPropertyChanged("Language");
-					this.OnLanguageChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Base", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Base
-		{
-			get
-			{
-				return this._Base;
-			}
-			set
-			{
-				if ((this._Base != value))
-				{
-					this.OnBaseChanging(value);
-					this.SendPropertyChanging();
-					this._Base = value;
-					this.SendPropertyChanged("Base");
-					this.OnBaseChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Comment", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
-		public string Comment
-		{
-			get
-			{
-				return this._Comment;
-			}
-			set
-			{
-				if ((this._Comment != value))
-				{
-					this.OnCommentChanging(value);
-					this.SendPropertyChanging();
-					this._Comment = value;
-					this.SendPropertyChanged("Comment");
-					this.OnCommentChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Picture", DbType="Image", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary Picture
-		{
-			get
-			{
-				return this._Picture;
-			}
-			set
-			{
-				if ((this._Picture != value))
-				{
-					this.OnPictureChanging(value);
-					this.SendPropertyChanging();
-					this._Picture = value;
-					this.SendPropertyChanged("Picture");
-					this.OnPictureChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BonusAll", DbType="Int")]
-		public System.Nullable<int> BonusAll
-		{
-			get
-			{
-				return this._BonusAll;
-			}
-			set
-			{
-				if ((this._BonusAll != value))
-				{
-					this.OnBonusAllChanging(value);
-					this.SendPropertyChanging();
-					this._BonusAll = value;
-					this.SendPropertyChanged("BonusAll");
-					this.OnBonusAllChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeStart", DbType="Date")]
-		public System.Nullable<System.DateTime> EmployeeStart
-		{
-			get
-			{
-				return this._EmployeeStart;
-			}
-			set
-			{
-				if ((this._EmployeeStart != value))
-				{
-					this.OnEmployeeStartChanging(value);
-					this.SendPropertyChanging();
-					this._EmployeeStart = value;
-					this.SendPropertyChanged("EmployeeStart");
-					this.OnEmployeeStartChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeStop", DbType="Date")]
-		public System.Nullable<System.DateTime> EmployeeStop
-		{
-			get
-			{
-				return this._EmployeeStop;
-			}
-			set
-			{
-				if ((this._EmployeeStop != value))
-				{
-					this.OnEmployeeStopChanging(value);
-					this.SendPropertyChanging();
-					this._EmployeeStop = value;
-					this.SendPropertyChanged("EmployeeStop");
-					this.OnEmployeeStopChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectID", DbType="BigInt")]
-		public System.Nullable<long> ProjectID
-		{
-			get
-			{
-				return this._ProjectID;
-			}
-			set
-			{
-				if ((this._ProjectID != value))
-				{
-					if (this._ProjectInfo.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnProjectIDChanging(value);
-					this.SendPropertyChanging();
-					this._ProjectID = value;
-					this.SendPropertyChanged("ProjectID");
-					this.OnProjectIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="EmployeeInfo_Participation_in_project", Storage="_Participation_in_project", ThisKey="EmployeeID", OtherKey="EmpId", IsUnique=true, IsForeignKey=false)]
-		public Participation_in_project Participation_in_project
-		{
-			get
-			{
-				return this._Participation_in_project.Entity;
-			}
-			set
-			{
-				Participation_in_project previousValue = this._Participation_in_project.Entity;
-				if (((previousValue != value) 
-							|| (this._Participation_in_project.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Participation_in_project.Entity = null;
-						previousValue.EmployeeInfo = null;
-					}
-					this._Participation_in_project.Entity = value;
-					if ((value != null))
-					{
-						value.EmployeeInfo = this;
-					}
-					this.SendPropertyChanged("Participation_in_project");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ProjectInfo_EmployeeInfo", Storage="_ProjectInfo", ThisKey="ProjectID", OtherKey="ProjectID", IsForeignKey=true)]
-		public ProjectInfo ProjectInfo
-		{
-			get
-			{
-				return this._ProjectInfo.Entity;
-			}
-			set
-			{
-				ProjectInfo previousValue = this._ProjectInfo.Entity;
-				if (((previousValue != value) 
-							|| (this._ProjectInfo.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._ProjectInfo.Entity = null;
-						previousValue.EmployeeInfo.Remove(this);
-					}
-					this._ProjectInfo.Entity = value;
-					if ((value != null))
-					{
-						value.EmployeeInfo.Add(this);
-						this._ProjectID = value.ProjectID;
-					}
-					else
-					{
-						this._ProjectID = default(Nullable<long>);
-					}
-					this.SendPropertyChanged("ProjectInfo");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SalaryInfo_EmployeeInfo", Storage="_SalaryInfo", ThisKey="EmployeeID", OtherKey="EmployeeId", IsForeignKey=true)]
-		public SalaryInfo SalaryInfo
-		{
-			get
-			{
-				return this._SalaryInfo.Entity;
-			}
-			set
-			{
-				SalaryInfo previousValue = this._SalaryInfo.Entity;
-				if (((previousValue != value) 
-							|| (this._SalaryInfo.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._SalaryInfo.Entity = null;
-						previousValue.EmployeeInfo = null;
-					}
-					this._SalaryInfo.Entity = value;
-					if ((value != null))
-					{
-						value.EmployeeInfo = this;
-						this._EmployeeID = value.EmployeeId;
-					}
-					else
-					{
-						this._EmployeeID = default(long);
-					}
-					this.SendPropertyChanged("SalaryInfo");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ProjectInfo")]
 	public partial class ProjectInfo : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -895,9 +407,9 @@ namespace Kvadro
 		
 		private string _INN;
 		
-		private EntitySet<EmployeeInfo> _EmployeeInfo;
-		
 		private EntitySet<Programming_Languages> _Programming_Languages;
+		
+		private EntitySet<EmployeeInfo> _EmployeeInfo;
 		
 		private EntityRef<CustomerInfo> _CustomerInfo;
 		
@@ -923,8 +435,8 @@ namespace Kvadro
 		
 		public ProjectInfo()
 		{
-			this._EmployeeInfo = new EntitySet<EmployeeInfo>(new Action<EmployeeInfo>(this.attach_EmployeeInfo), new Action<EmployeeInfo>(this.detach_EmployeeInfo));
 			this._Programming_Languages = new EntitySet<Programming_Languages>(new Action<Programming_Languages>(this.attach_Programming_Languages), new Action<Programming_Languages>(this.detach_Programming_Languages));
+			this._EmployeeInfo = new EntitySet<EmployeeInfo>(new Action<EmployeeInfo>(this.attach_EmployeeInfo), new Action<EmployeeInfo>(this.detach_EmployeeInfo));
 			this._CustomerInfo = default(EntityRef<CustomerInfo>);
 			OnCreated();
 		}
@@ -1073,19 +585,6 @@ namespace Kvadro
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ProjectInfo_EmployeeInfo", Storage="_EmployeeInfo", ThisKey="ProjectID", OtherKey="ProjectID")]
-		public EntitySet<EmployeeInfo> EmployeeInfo
-		{
-			get
-			{
-				return this._EmployeeInfo;
-			}
-			set
-			{
-				this._EmployeeInfo.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ProjectInfo_Programming_Languages", Storage="_Programming_Languages", ThisKey="ProjectID", OtherKey="ProjectId")]
 		public EntitySet<Programming_Languages> Programming_Languages
 		{
@@ -1096,6 +595,19 @@ namespace Kvadro
 			set
 			{
 				this._Programming_Languages.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ProjectInfo_EmployeeInfo", Storage="_EmployeeInfo", ThisKey="ProjectID", OtherKey="ProjectID")]
+		public EntitySet<EmployeeInfo> EmployeeInfo
+		{
+			get
+			{
+				return this._EmployeeInfo;
+			}
+			set
+			{
+				this._EmployeeInfo.Assign(value);
 			}
 		}
 		
@@ -1153,18 +665,6 @@ namespace Kvadro
 			}
 		}
 		
-		private void attach_EmployeeInfo(EmployeeInfo entity)
-		{
-			this.SendPropertyChanging();
-			entity.ProjectInfo = this;
-		}
-		
-		private void detach_EmployeeInfo(EmployeeInfo entity)
-		{
-			this.SendPropertyChanging();
-			entity.ProjectInfo = null;
-		}
-		
 		private void attach_Programming_Languages(Programming_Languages entity)
 		{
 			this.SendPropertyChanging();
@@ -1172,6 +672,18 @@ namespace Kvadro
 		}
 		
 		private void detach_Programming_Languages(Programming_Languages entity)
+		{
+			this.SendPropertyChanging();
+			entity.ProjectInfo = null;
+		}
+		
+		private void attach_EmployeeInfo(EmployeeInfo entity)
+		{
+			this.SendPropertyChanging();
+			entity.ProjectInfo = this;
+		}
+		
+		private void detach_EmployeeInfo(EmployeeInfo entity)
 		{
 			this.SendPropertyChanging();
 			entity.ProjectInfo = null;
@@ -1669,6 +1181,422 @@ namespace Kvadro
 						this._ProjectId = default(long);
 					}
 					this.SendPropertyChanged("ProjectInfo");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.EmployeeInfo")]
+	public partial class EmployeeInfo : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _EmployeeID;
+		
+		private string _EmployeeName;
+		
+		private string _Adress;
+		
+		private string _District;
+		
+		private int _Experiance;
+		
+		private System.DateTime _Year;
+		
+		private string _Language;
+		
+		private string _Base;
+		
+		private string _Comment;
+		
+		private System.Nullable<int> _BonusAll;
+		
+		private System.Nullable<long> _ProjectID;
+		
+		private EntityRef<Participation_in_project> _Participation_in_project;
+		
+		private EntityRef<ProjectInfo> _ProjectInfo;
+		
+		private EntityRef<SalaryInfo> _SalaryInfo;
+		
+    #region Определения метода расширяемости
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnEmployeeIDChanging(long value);
+    partial void OnEmployeeIDChanged();
+    partial void OnEmployeeNameChanging(string value);
+    partial void OnEmployeeNameChanged();
+    partial void OnAdressChanging(string value);
+    partial void OnAdressChanged();
+    partial void OnDistrictChanging(string value);
+    partial void OnDistrictChanged();
+    partial void OnExperianceChanging(int value);
+    partial void OnExperianceChanged();
+    partial void OnYearChanging(System.DateTime value);
+    partial void OnYearChanged();
+    partial void OnLanguageChanging(string value);
+    partial void OnLanguageChanged();
+    partial void OnBaseChanging(string value);
+    partial void OnBaseChanged();
+    partial void OnCommentChanging(string value);
+    partial void OnCommentChanged();
+    partial void OnBonusAllChanging(System.Nullable<int> value);
+    partial void OnBonusAllChanged();
+    partial void OnProjectIDChanging(System.Nullable<long> value);
+    partial void OnProjectIDChanged();
+    #endregion
+		
+		public EmployeeInfo()
+		{
+			this._Participation_in_project = default(EntityRef<Participation_in_project>);
+			this._ProjectInfo = default(EntityRef<ProjectInfo>);
+			this._SalaryInfo = default(EntityRef<SalaryInfo>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeID", DbType="BigInt NOT NULL", IsPrimaryKey=true)]
+		public long EmployeeID
+		{
+			get
+			{
+				return this._EmployeeID;
+			}
+			set
+			{
+				if ((this._EmployeeID != value))
+				{
+					if (this._SalaryInfo.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnEmployeeIDChanging(value);
+					this.SendPropertyChanging();
+					this._EmployeeID = value;
+					this.SendPropertyChanged("EmployeeID");
+					this.OnEmployeeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeName", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string EmployeeName
+		{
+			get
+			{
+				return this._EmployeeName;
+			}
+			set
+			{
+				if ((this._EmployeeName != value))
+				{
+					this.OnEmployeeNameChanging(value);
+					this.SendPropertyChanging();
+					this._EmployeeName = value;
+					this.SendPropertyChanged("EmployeeName");
+					this.OnEmployeeNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Adress", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Adress
+		{
+			get
+			{
+				return this._Adress;
+			}
+			set
+			{
+				if ((this._Adress != value))
+				{
+					this.OnAdressChanging(value);
+					this.SendPropertyChanging();
+					this._Adress = value;
+					this.SendPropertyChanged("Adress");
+					this.OnAdressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_District", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string District
+		{
+			get
+			{
+				return this._District;
+			}
+			set
+			{
+				if ((this._District != value))
+				{
+					this.OnDistrictChanging(value);
+					this.SendPropertyChanging();
+					this._District = value;
+					this.SendPropertyChanged("District");
+					this.OnDistrictChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Experiance", DbType="Int NOT NULL")]
+		public int Experiance
+		{
+			get
+			{
+				return this._Experiance;
+			}
+			set
+			{
+				if ((this._Experiance != value))
+				{
+					this.OnExperianceChanging(value);
+					this.SendPropertyChanging();
+					this._Experiance = value;
+					this.SendPropertyChanged("Experiance");
+					this.OnExperianceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Year", DbType="Date NOT NULL")]
+		public System.DateTime Year
+		{
+			get
+			{
+				return this._Year;
+			}
+			set
+			{
+				if ((this._Year != value))
+				{
+					this.OnYearChanging(value);
+					this.SendPropertyChanging();
+					this._Year = value;
+					this.SendPropertyChanged("Year");
+					this.OnYearChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Language", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Language
+		{
+			get
+			{
+				return this._Language;
+			}
+			set
+			{
+				if ((this._Language != value))
+				{
+					this.OnLanguageChanging(value);
+					this.SendPropertyChanging();
+					this._Language = value;
+					this.SendPropertyChanged("Language");
+					this.OnLanguageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Base", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Base
+		{
+			get
+			{
+				return this._Base;
+			}
+			set
+			{
+				if ((this._Base != value))
+				{
+					this.OnBaseChanging(value);
+					this.SendPropertyChanging();
+					this._Base = value;
+					this.SendPropertyChanged("Base");
+					this.OnBaseChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Comment", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		public string Comment
+		{
+			get
+			{
+				return this._Comment;
+			}
+			set
+			{
+				if ((this._Comment != value))
+				{
+					this.OnCommentChanging(value);
+					this.SendPropertyChanging();
+					this._Comment = value;
+					this.SendPropertyChanged("Comment");
+					this.OnCommentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BonusAll", DbType="Int")]
+		public System.Nullable<int> BonusAll
+		{
+			get
+			{
+				return this._BonusAll;
+			}
+			set
+			{
+				if ((this._BonusAll != value))
+				{
+					this.OnBonusAllChanging(value);
+					this.SendPropertyChanging();
+					this._BonusAll = value;
+					this.SendPropertyChanged("BonusAll");
+					this.OnBonusAllChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectID", DbType="BigInt")]
+		public System.Nullable<long> ProjectID
+		{
+			get
+			{
+				return this._ProjectID;
+			}
+			set
+			{
+				if ((this._ProjectID != value))
+				{
+					if (this._ProjectInfo.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnProjectIDChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectID = value;
+					this.SendPropertyChanged("ProjectID");
+					this.OnProjectIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="EmployeeInfo_Participation_in_project", Storage="_Participation_in_project", ThisKey="EmployeeID", OtherKey="EmpId", IsUnique=true, IsForeignKey=false)]
+		public Participation_in_project Participation_in_project
+		{
+			get
+			{
+				return this._Participation_in_project.Entity;
+			}
+			set
+			{
+				Participation_in_project previousValue = this._Participation_in_project.Entity;
+				if (((previousValue != value) 
+							|| (this._Participation_in_project.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Participation_in_project.Entity = null;
+						previousValue.EmployeeInfo = null;
+					}
+					this._Participation_in_project.Entity = value;
+					if ((value != null))
+					{
+						value.EmployeeInfo = this;
+					}
+					this.SendPropertyChanged("Participation_in_project");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ProjectInfo_EmployeeInfo", Storage="_ProjectInfo", ThisKey="ProjectID", OtherKey="ProjectID", IsForeignKey=true)]
+		public ProjectInfo ProjectInfo
+		{
+			get
+			{
+				return this._ProjectInfo.Entity;
+			}
+			set
+			{
+				ProjectInfo previousValue = this._ProjectInfo.Entity;
+				if (((previousValue != value) 
+							|| (this._ProjectInfo.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._ProjectInfo.Entity = null;
+						previousValue.EmployeeInfo.Remove(this);
+					}
+					this._ProjectInfo.Entity = value;
+					if ((value != null))
+					{
+						value.EmployeeInfo.Add(this);
+						this._ProjectID = value.ProjectID;
+					}
+					else
+					{
+						this._ProjectID = default(Nullable<long>);
+					}
+					this.SendPropertyChanged("ProjectInfo");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SalaryInfo_EmployeeInfo", Storage="_SalaryInfo", ThisKey="EmployeeID", OtherKey="EmployeeId", IsForeignKey=true)]
+		public SalaryInfo SalaryInfo
+		{
+			get
+			{
+				return this._SalaryInfo.Entity;
+			}
+			set
+			{
+				SalaryInfo previousValue = this._SalaryInfo.Entity;
+				if (((previousValue != value) 
+							|| (this._SalaryInfo.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._SalaryInfo.Entity = null;
+						previousValue.EmployeeInfo = null;
+					}
+					this._SalaryInfo.Entity = value;
+					if ((value != null))
+					{
+						value.EmployeeInfo = this;
+						this._EmployeeID = value.EmployeeId;
+					}
+					else
+					{
+						this._EmployeeID = default(long);
+					}
+					this.SendPropertyChanged("SalaryInfo");
 				}
 			}
 		}

@@ -6,12 +6,17 @@
     <edmx:Diagrams>
       <Diagram DiagramId="890aad736f6b4546b8602f8b19115c70" Name="Diagram1" ZoomLevel="93">
         <EntityTypeShape EntityType="KvadroModel.CustomerInfo" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="KvadroModel.EmployeeInfo" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="KvadroModel.ProjectInfo" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="KvadroModel.SalaryInfo" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
         <AssociationConnector Association="KvadroModel.FK_ProjectInfo_CustomerInfo" ManuallyRouted="false" />
-        <AssociationConnector Association="KvadroModel.FK_EmployeeInfo_ProjectInfo" ManuallyRouted="false" />
-        <AssociationConnector Association="KvadroModel.FK_EmployeeInfo_ProjectInfo1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="KvadroModel.Participation_in_project" Width="1.5" PointX="7.875" PointY="2" />
+        <EntityTypeShape EntityType="KvadroModel.Programming_Languages" Width="1.5" PointX="7.875" PointY="4.125" />
+        <EntityTypeShape EntityType="KvadroModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="7.75" />
+        <AssociationConnector Association="KvadroModel.FK_Programming_Languages_ProjectInfo" />
+        <EntityTypeShape EntityType="KvadroModel.EmployeeInfo" Width="1.5" PointX="5.25" PointY="1.375" />
+        <AssociationConnector Association="KvadroModel.FK_EmployeeInfo_ProjectInfo1" />
+        <AssociationConnector Association="KvadroModel.FK_EmployeeInfo_SalaryInfo" />
+        <AssociationConnector Association="KvadroModel.FK_Participation_in_project_EmployeeInfo" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

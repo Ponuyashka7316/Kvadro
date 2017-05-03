@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище KvadroModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище KvadroModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CustomerInfo">
           <Key>
             <PropertyRef Name="INN" />
@@ -32,9 +32,24 @@
           <Property Name="Base" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Comment" Type="text" Nullable="false" />
           <Property Name="BonusAll" Type="int" />
-          <Property Name="EmployeeStart" Type="date" />
-          <Property Name="EmployeeStop" Type="date" />
           <Property Name="ProjectID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Participation in project">
+          <Key>
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="ProjId" Type="bigint" />
+          <Property Name="EmpId" Type="bigint" Nullable="false" />
+          <Property Name="StartDate" Type="date" />
+          <Property Name="StopDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Programming Languages">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="ProjectId" Type="bigint" Nullable="false" />
         </EntityType>
         <EntityType Name="ProjectInfo">
           <Key>
@@ -58,7 +73,29 @@
           <Property Name="Exempt" Type="money" />
           <Property Name="EmployeeId" Type="bigint" Nullable="false" />
         </EntityType>
-        <Association Name="FK_EmployeeInfo_ProjectInfo">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_EmployeeInfo_ProjectInfo1">
+          <End Role="ProjectInfo" Type="Self.ProjectInfo" Multiplicity="0..1" />
+          <End Role="EmployeeInfo" Type="Self.EmployeeInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectInfo">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="EmployeeInfo">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeInfo_SalaryInfo">
           <End Role="SalaryInfo" Type="Self.SalaryInfo" Multiplicity="1" />
           <End Role="EmployeeInfo" Type="Self.EmployeeInfo" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -70,15 +107,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_EmployeeInfo_ProjectInfo1">
-          <End Role="ProjectInfo" Type="Self.ProjectInfo" Multiplicity="0..1" />
-          <End Role="EmployeeInfo" Type="Self.EmployeeInfo" Multiplicity="*" />
+        <Association Name="FK_Participation in project_EmployeeInfo">
+          <End Role="EmployeeInfo" Type="Self.EmployeeInfo" Multiplicity="1" />
+          <End Role="Participation in project" Type="Self.Participation in project" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeInfo">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Participation in project">
+              <PropertyRef Name="EmpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Programming Languages_ProjectInfo">
+          <End Role="ProjectInfo" Type="Self.ProjectInfo" Multiplicity="1" />
+          <End Role="Programming Languages" Type="Self.Programming Languages" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ProjectInfo">
               <PropertyRef Name="ProjectID" />
             </Principal>
-            <Dependent Role="EmployeeInfo">
-              <PropertyRef Name="ProjectID" />
+            <Dependent Role="Programming Languages">
+              <PropertyRef Name="ProjectId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -97,23 +146,33 @@
         <EntityContainer Name="Хранилище KvadroModelContainer">
           <EntitySet Name="CustomerInfo" EntityType="Self.CustomerInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmployeeInfo" EntityType="Self.EmployeeInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Participation in project" EntityType="Self.Participation in project" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Programming Languages" EntityType="Self.Programming Languages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProjectInfo" EntityType="Self.ProjectInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SalaryInfo" EntityType="Self.SalaryInfo" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_EmployeeInfo_ProjectInfo" Association="Self.FK_EmployeeInfo_ProjectInfo">
-            <End Role="SalaryInfo" EntitySet="SalaryInfo" />
-            <End Role="EmployeeInfo" EntitySet="EmployeeInfo" />
-          </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_EmployeeInfo_ProjectInfo1" Association="Self.FK_EmployeeInfo_ProjectInfo1">
             <End Role="ProjectInfo" EntitySet="ProjectInfo" />
             <End Role="EmployeeInfo" EntitySet="EmployeeInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeInfo_SalaryInfo" Association="Self.FK_EmployeeInfo_SalaryInfo">
+            <End Role="SalaryInfo" EntitySet="SalaryInfo" />
+            <End Role="EmployeeInfo" EntitySet="EmployeeInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Participation in project_EmployeeInfo" Association="Self.FK_Participation in project_EmployeeInfo">
+            <End Role="EmployeeInfo" EntitySet="EmployeeInfo" />
+            <End Role="Participation in project" EntitySet="Participation in project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Programming Languages_ProjectInfo" Association="Self.FK_Programming Languages_ProjectInfo">
+            <End Role="ProjectInfo" EntitySet="ProjectInfo" />
+            <End Role="Programming Languages" EntitySet="Programming Languages" />
           </AssociationSet>
           <AssociationSet Name="FK_ProjectInfo_CustomerInfo" Association="Self.FK_ProjectInfo_CustomerInfo">
             <End Role="CustomerInfo" EntitySet="CustomerInfo" />
             <End Role="ProjectInfo" EntitySet="ProjectInfo" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="KvadroModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -131,26 +190,6 @@
           <Property Name="PhoneWorker" Type="Int32" />
           <NavigationProperty Name="ProjectInfo" Relationship="Self.FK_ProjectInfo_CustomerInfo" FromRole="CustomerInfo" ToRole="ProjectInfo" />
         </EntityType>
-        <EntityType Name="EmployeeInfo">
-          <Key>
-            <PropertyRef Name="EmployeeID" />
-          </Key>
-          <Property Name="EmployeeID" Type="Int64" Nullable="false" />
-          <Property Name="EmployeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Adress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Experiance" Type="Int32" Nullable="false" />
-          <Property Name="Year" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Language" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Base" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="BonusAll" Type="Int32" />
-          <Property Name="EmployeeStart" Type="DateTime" Precision="0" />
-          <Property Name="EmployeeStop" Type="DateTime" Precision="0" />
-          <Property Name="ProjectID" Type="Int64" />
-          <NavigationProperty Name="SalaryInfo" Relationship="Self.FK_EmployeeInfo_ProjectInfo" FromRole="EmployeeInfo" ToRole="SalaryInfo" />
-          <NavigationProperty Name="ProjectInfo" Relationship="Self.FK_EmployeeInfo_ProjectInfo1" FromRole="EmployeeInfo" ToRole="ProjectInfo" />
-        </EntityType>
         <EntityType Name="ProjectInfo">
           <Key>
             <PropertyRef Name="ProjectID" />
@@ -163,7 +202,8 @@
           <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="INN" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CustomerInfo" Relationship="Self.FK_ProjectInfo_CustomerInfo" FromRole="ProjectInfo" ToRole="CustomerInfo" />
-          <NavigationProperty Name="EmployeeInfo" Relationship="Self.FK_EmployeeInfo_ProjectInfo1" FromRole="ProjectInfo" ToRole="EmployeeInfo" />
+          <NavigationProperty Name="Programming_Languages" Relationship="KvadroModel.FK_Programming_Languages_ProjectInfo" FromRole="ProjectInfo" ToRole="Programming_Languages" />
+          <NavigationProperty Name="EmployeeInfo" Relationship="KvadroModel.FK_EmployeeInfo_ProjectInfo1" FromRole="ProjectInfo" ToRole="EmployeeInfo" />
         </EntityType>
         <EntityType Name="SalaryInfo">
           <Key>
@@ -174,7 +214,7 @@
           <Property Name="GrossSalary" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Exempt" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="EmployeeId" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="EmployeeInfo" Relationship="Self.FK_EmployeeInfo_ProjectInfo" FromRole="SalaryInfo" ToRole="EmployeeInfo" />
+          <NavigationProperty Name="EmployeeInfo" Relationship="KvadroModel.FK_EmployeeInfo_SalaryInfo" FromRole="SalaryInfo" ToRole="EmployeeInfo" />
         </EntityType>
         <Association Name="FK_ProjectInfo_CustomerInfo">
           <End Role="CustomerInfo" Type="Self.CustomerInfo" Multiplicity="0..1" />
@@ -188,21 +228,98 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_EmployeeInfo_ProjectInfo">
-          <End Role="SalaryInfo" Type="Self.SalaryInfo" Multiplicity="1" />
-          <End Role="EmployeeInfo" Type="Self.EmployeeInfo" Multiplicity="0..1" />
+        <EntityContainer Name="KvadroEntities6" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CustomerInfo" EntityType="Self.CustomerInfo" />
+          <EntitySet Name="ProjectInfo" EntityType="Self.ProjectInfo" />
+          <EntitySet Name="SalaryInfo" EntityType="Self.SalaryInfo" />
+          <AssociationSet Name="FK_ProjectInfo_CustomerInfo" Association="Self.FK_ProjectInfo_CustomerInfo">
+            <End Role="CustomerInfo" EntitySet="CustomerInfo" />
+            <End Role="ProjectInfo" EntitySet="ProjectInfo" />
+          </AssociationSet>
+          <EntitySet Name="Participation_in_project" EntityType="KvadroModel.Participation_in_project" />
+          <EntitySet Name="Programming_Languages" EntityType="KvadroModel.Programming_Languages" />
+          <EntitySet Name="sysdiagrams" EntityType="KvadroModel.sysdiagrams" />
+          <AssociationSet Name="FK_Programming_Languages_ProjectInfo" Association="KvadroModel.FK_Programming_Languages_ProjectInfo">
+            <End Role="ProjectInfo" EntitySet="ProjectInfo" />
+            <End Role="Programming_Languages" EntitySet="Programming_Languages" />
+          </AssociationSet>
+          <EntitySet Name="EmployeeInfo" EntityType="KvadroModel.EmployeeInfo" />
+          <AssociationSet Name="FK_EmployeeInfo_ProjectInfo1" Association="KvadroModel.FK_EmployeeInfo_ProjectInfo1">
+            <End Role="ProjectInfo" EntitySet="ProjectInfo" />
+            <End Role="EmployeeInfo" EntitySet="EmployeeInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeInfo_SalaryInfo" Association="KvadroModel.FK_EmployeeInfo_SalaryInfo">
+            <End Role="SalaryInfo" EntitySet="SalaryInfo" />
+            <End Role="EmployeeInfo" EntitySet="EmployeeInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Participation_in_project_EmployeeInfo" Association="KvadroModel.FK_Participation_in_project_EmployeeInfo">
+            <End Role="EmployeeInfo" EntitySet="EmployeeInfo" />
+            <End Role="Participation_in_project" EntitySet="Participation_in_project" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Participation_in_project">
+          <Key>
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="ProjId" Type="Int64" />
+          <Property Name="EmpId" Type="Int64" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" />
+          <Property Name="StopDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="EmployeeInfo" Relationship="KvadroModel.FK_Participation_in_project_EmployeeInfo" FromRole="Participation_in_project" ToRole="EmployeeInfo" />
+        </EntityType>
+        <EntityType Name="Programming_Languages">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="ProjectId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="ProjectInfo" Relationship="KvadroModel.FK_Programming_Languages_ProjectInfo" FromRole="Programming_Languages" ToRole="ProjectInfo" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Programming_Languages_ProjectInfo">
+          <End Type="KvadroModel.ProjectInfo" Role="ProjectInfo" Multiplicity="1" />
+          <End Type="KvadroModel.Programming_Languages" Role="Programming_Languages" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="SalaryInfo">
-              <PropertyRef Name="EmployeeId" />
+            <Principal Role="ProjectInfo">
+              <PropertyRef Name="ProjectID" />
             </Principal>
-            <Dependent Role="EmployeeInfo">
-              <PropertyRef Name="EmployeeID" />
+            <Dependent Role="Programming_Languages">
+              <PropertyRef Name="ProjectId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="EmployeeInfo">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int64" Nullable="false" />
+          <Property Name="EmployeeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Adress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="District" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Experiance" Type="Int32" Nullable="false" />
+          <Property Name="Year" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Language" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Base" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Comment" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BonusAll" Type="Int32" />
+          <Property Name="ProjectID" Type="Int64" />
+          <NavigationProperty Name="ProjectInfo" Relationship="KvadroModel.FK_EmployeeInfo_ProjectInfo1" FromRole="EmployeeInfo" ToRole="ProjectInfo" />
+          <NavigationProperty Name="SalaryInfo" Relationship="KvadroModel.FK_EmployeeInfo_SalaryInfo" FromRole="EmployeeInfo" ToRole="SalaryInfo" />
+          <NavigationProperty Name="Participation_in_project" Relationship="KvadroModel.FK_Participation_in_project_EmployeeInfo" FromRole="EmployeeInfo" ToRole="Participation_in_project" />
+        </EntityType>
         <Association Name="FK_EmployeeInfo_ProjectInfo1">
-          <End Role="ProjectInfo" Type="Self.ProjectInfo" Multiplicity="0..1" />
-          <End Role="EmployeeInfo" Type="Self.EmployeeInfo" Multiplicity="*" />
+          <End Type="KvadroModel.ProjectInfo" Role="ProjectInfo" Multiplicity="0..1" />
+          <End Type="KvadroModel.EmployeeInfo" Role="EmployeeInfo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ProjectInfo">
               <PropertyRef Name="ProjectID" />
@@ -212,24 +329,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="KvadroEntities6" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CustomerInfo" EntityType="Self.CustomerInfo" />
-          <EntitySet Name="EmployeeInfo" EntityType="Self.EmployeeInfo" />
-          <EntitySet Name="ProjectInfo" EntityType="Self.ProjectInfo" />
-          <EntitySet Name="SalaryInfo" EntityType="Self.SalaryInfo" />
-          <AssociationSet Name="FK_ProjectInfo_CustomerInfo" Association="Self.FK_ProjectInfo_CustomerInfo">
-            <End Role="CustomerInfo" EntitySet="CustomerInfo" />
-            <End Role="ProjectInfo" EntitySet="ProjectInfo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EmployeeInfo_ProjectInfo" Association="Self.FK_EmployeeInfo_ProjectInfo">
-            <End Role="SalaryInfo" EntitySet="SalaryInfo" />
-            <End Role="EmployeeInfo" EntitySet="EmployeeInfo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EmployeeInfo_ProjectInfo1" Association="Self.FK_EmployeeInfo_ProjectInfo1">
-            <End Role="ProjectInfo" EntitySet="ProjectInfo" />
-            <End Role="EmployeeInfo" EntitySet="EmployeeInfo" />
-          </AssociationSet>
-        </EntityContainer>
+        <Association Name="FK_EmployeeInfo_SalaryInfo">
+          <End Type="KvadroModel.SalaryInfo" Role="SalaryInfo" Multiplicity="1" />
+          <End Type="KvadroModel.EmployeeInfo" Role="EmployeeInfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="SalaryInfo">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="EmployeeInfo">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Participation_in_project_EmployeeInfo">
+          <End Type="KvadroModel.EmployeeInfo" Role="EmployeeInfo" Multiplicity="1" />
+          <End Type="KvadroModel.Participation_in_project" Role="Participation_in_project" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeInfo">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Participation_in_project">
+              <PropertyRef Name="EmpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -247,25 +370,6 @@
                 <ScalarProperty Name="AdressCost" ColumnName="AdressCost" />
                 <ScalarProperty Name="FioWorker" ColumnName="FioWorker" />
                 <ScalarProperty Name="PhoneWorker" ColumnName="PhoneWorker" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="EmployeeInfo">
-            <EntityTypeMapping TypeName="KvadroModel.EmployeeInfo">
-              <MappingFragment StoreEntitySet="EmployeeInfo">
-                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
-                <ScalarProperty Name="Adress" ColumnName="Adress" />
-                <ScalarProperty Name="District" ColumnName="District" />
-                <ScalarProperty Name="Experiance" ColumnName="Experiance" />
-                <ScalarProperty Name="Year" ColumnName="Year" />
-                <ScalarProperty Name="Language" ColumnName="Language" />
-                <ScalarProperty Name="Base" ColumnName="Base" />
-                <ScalarProperty Name="Comment" ColumnName="Comment" />
-                <ScalarProperty Name="BonusAll" ColumnName="BonusAll" />
-                <ScalarProperty Name="EmployeeStart" ColumnName="EmployeeStart" />
-                <ScalarProperty Name="EmployeeStop" ColumnName="EmployeeStop" />
-                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -290,6 +394,53 @@
                 <ScalarProperty Name="GrossSalary" ColumnName="GrossSalary" />
                 <ScalarProperty Name="Exempt" ColumnName="Exempt" />
                 <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Participation_in_project">
+            <EntityTypeMapping TypeName="KvadroModel.Participation_in_project">
+              <MappingFragment StoreEntitySet="Participation in project">
+                <ScalarProperty Name="StopDate" ColumnName="StopDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="ProjId" ColumnName="ProjId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Programming_Languages">
+            <EntityTypeMapping TypeName="KvadroModel.Programming_Languages">
+              <MappingFragment StoreEntitySet="Programming Languages">
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="KvadroModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeInfo">
+            <EntityTypeMapping TypeName="KvadroModel.EmployeeInfo">
+              <MappingFragment StoreEntitySet="EmployeeInfo">
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="BonusAll" ColumnName="BonusAll" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Base" ColumnName="Base" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Experiance" ColumnName="Experiance" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

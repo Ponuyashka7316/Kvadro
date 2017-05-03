@@ -12,22 +12,12 @@ namespace Kvadro
     using System;
     using System.Collections.Generic;
     
-    //public partial class EmployeeInfo
+    //public partial class Programming_Languages
     //{
-    //    public long EmployeeID { get; set; }
-    //    public string EmployeeName { get; set; }
-    //    public string Adress { get; set; }
-    //    public string District { get; set; }
-    //    public int Experiance { get; set; }
-    //    public System.DateTime Year { get; set; }
-    //    public string Language { get; set; }
-    //    public string Base { get; set; }
-    //    public string Comment { get; set; }
-    //    public Nullable<int> BonusAll { get; set; }
-    //    public Nullable<long> ProjectID { get; set; }
+    //    public long id { get; set; }
+    //    public string name { get; set; }
+    //    public long ProjectId { get; set; }
     
     //    public virtual ProjectInfo ProjectInfo { get; set; }
-    //    public virtual SalaryInfo SalaryInfo { get; set; }
-    //    public virtual Participation_in_project Participation_in_project { get; set; }
     //}
 }

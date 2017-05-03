@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -13,6 +15,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Serialization;
+using System.Xml;
+using System.IO;
+
 namespace Kvadro
 {
 
@@ -246,12 +252,43 @@ namespace Kvadro
             this.Show();
         }
 
-        //private void Button1_Click_1(object sender, RoutedEventArgs e)
-        //{
-        //    Kv3 f = new Kv3();
-        //    this.Hide();
-        //    f.ShowDialog();
-        //    this.Show();
-        //}
+        private void Button1_Copy2_Click(object sender, RoutedEventArgs e)
+        {
+            ado1 f = new ado1();
+            this.Hide();
+            f.ShowDialog();
+            this.Show();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+           
+            try
+            {
+                
+                //employeetDataSet.ReadXml(CONTACTDETAILS_FILENAME, XmlReadMode.Auto);
+                //contactBindingSource = new BindingSource(employeeDataSet, employeeDataSet.Tables[0].TableName);
+                //this.contactDataGridView.DataSource = contactBindingSource;
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message, "Exception");
+            }
+        }
+
+        public void ConnectionXML()
+        {
+            
+        }
+
     }
+
+    //private void Button1_Click_1(object sender, RoutedEventArgs e)
+    //{
+    //    Kv3 f = new Kv3();
+    //    this.Hide();
+    //    f.ShowDialog();
+    //    this.Show();
+    //}
 }
+

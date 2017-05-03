@@ -1,0 +1,11 @@
+<?xml version="1.0" standalone="yes"?>
+<DocumentElement>
+  <MyTable>
+    <Foo>1</Foo>
+    <Bar>abc</Bar>
+  </MyTable>
+  <MyTable>
+    <Foo>2</Foo>
+    <Bar>def</Bar>
+  </MyTable>
+</DocumentElement>

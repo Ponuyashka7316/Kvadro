@@ -26,8 +26,11 @@ namespace Kvadro
         }
     
         public virtual DbSet<CustomerInfo> CustomerInfo { get; set; }
-        public virtual DbSet<EmployeeInfo> EmployeeInfo { get; set; }
         public virtual DbSet<ProjectInfo> ProjectInfo { get; set; }
         public virtual DbSet<SalaryInfo> SalaryInfo { get; set; }
+        public virtual DbSet<Participation_in_project> Participation_in_project { get; set; }
+        public virtual DbSet<Programming_Languages> Programming_Languages { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<EmployeeInfo> EmployeeInfo { get; set; }
     }
 }
