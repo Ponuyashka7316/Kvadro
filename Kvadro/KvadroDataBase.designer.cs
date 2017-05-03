@@ -42,6 +42,12 @@ namespace Kvadro
     partial void InsertSalaryInfo(SalaryInfo instance);
     partial void UpdateSalaryInfo(SalaryInfo instance);
     partial void DeleteSalaryInfo(SalaryInfo instance);
+    partial void InsertParticipation_in_project(Participation_in_project instance);
+    partial void UpdateParticipation_in_project(Participation_in_project instance);
+    partial void DeleteParticipation_in_project(Participation_in_project instance);
+    partial void InsertProgramming_Languages(Programming_Languages instance);
+    partial void UpdateProgramming_Languages(Programming_Languages instance);
+    partial void DeleteProgramming_Languages(Programming_Languages instance);
     #endregion
 		
 		public KvadroDataBaseDataContext() : 
@@ -103,6 +109,22 @@ namespace Kvadro
 			get
 			{
 				return this.GetTable<SalaryInfo>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Participation_in_project> Participation_in_project
+		{
+			get
+			{
+				return this.GetTable<Participation_in_project>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Programming_Languages> Programming_Languages
+		{
+			get
+			{
+				return this.GetTable<Programming_Languages>();
 			}
 		}
 	}
@@ -399,6 +421,8 @@ namespace Kvadro
 		
 		private System.Nullable<long> _ProjectID;
 		
+		private EntityRef<Participation_in_project> _Participation_in_project;
+		
 		private EntityRef<ProjectInfo> _ProjectInfo;
 		
 		private EntityRef<SalaryInfo> _SalaryInfo;
@@ -439,6 +463,7 @@ namespace Kvadro
 		
 		public EmployeeInfo()
 		{
+			this._Participation_in_project = default(EntityRef<Participation_in_project>);
 			this._ProjectInfo = default(EntityRef<ProjectInfo>);
 			this._SalaryInfo = default(EntityRef<SalaryInfo>);
 			OnCreated();
@@ -732,6 +757,35 @@ namespace Kvadro
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="EmployeeInfo_Participation_in_project", Storage="_Participation_in_project", ThisKey="EmployeeID", OtherKey="EmpId", IsUnique=true, IsForeignKey=false)]
+		public Participation_in_project Participation_in_project
+		{
+			get
+			{
+				return this._Participation_in_project.Entity;
+			}
+			set
+			{
+				Participation_in_project previousValue = this._Participation_in_project.Entity;
+				if (((previousValue != value) 
+							|| (this._Participation_in_project.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Participation_in_project.Entity = null;
+						previousValue.EmployeeInfo = null;
+					}
+					this._Participation_in_project.Entity = value;
+					if ((value != null))
+					{
+						value.EmployeeInfo = this;
+					}
+					this.SendPropertyChanged("Participation_in_project");
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ProjectInfo_EmployeeInfo", Storage="_ProjectInfo", ThisKey="ProjectID", OtherKey="ProjectID", IsForeignKey=true)]
 		public ProjectInfo ProjectInfo
 		{
@@ -843,6 +897,8 @@ namespace Kvadro
 		
 		private EntitySet<EmployeeInfo> _EmployeeInfo;
 		
+		private EntitySet<Programming_Languages> _Programming_Languages;
+		
 		private EntityRef<CustomerInfo> _CustomerInfo;
 		
     #region Определения метода расширяемости
@@ -868,6 +924,7 @@ namespace Kvadro
 		public ProjectInfo()
 		{
 			this._EmployeeInfo = new EntitySet<EmployeeInfo>(new Action<EmployeeInfo>(this.attach_EmployeeInfo), new Action<EmployeeInfo>(this.detach_EmployeeInfo));
+			this._Programming_Languages = new EntitySet<Programming_Languages>(new Action<Programming_Languages>(this.attach_Programming_Languages), new Action<Programming_Languages>(this.detach_Programming_Languages));
 			this._CustomerInfo = default(EntityRef<CustomerInfo>);
 			OnCreated();
 		}
@@ -1029,6 +1086,19 @@ namespace Kvadro
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ProjectInfo_Programming_Languages", Storage="_Programming_Languages", ThisKey="ProjectID", OtherKey="ProjectId")]
+		public EntitySet<Programming_Languages> Programming_Languages
+		{
+			get
+			{
+				return this._Programming_Languages;
+			}
+			set
+			{
+				this._Programming_Languages.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CustomerInfo_ProjectInfo", Storage="_CustomerInfo", ThisKey="INN", OtherKey="INN", IsForeignKey=true)]
 		public CustomerInfo CustomerInfo
 		{
@@ -1090,6 +1160,18 @@ namespace Kvadro
 		}
 		
 		private void detach_EmployeeInfo(EmployeeInfo entity)
+		{
+			this.SendPropertyChanging();
+			entity.ProjectInfo = null;
+		}
+		
+		private void attach_Programming_Languages(Programming_Languages entity)
+		{
+			this.SendPropertyChanging();
+			entity.ProjectInfo = this;
+		}
+		
+		private void detach_Programming_Languages(Programming_Languages entity)
 		{
 			this.SendPropertyChanging();
 			entity.ProjectInfo = null;
@@ -1261,6 +1343,332 @@ namespace Kvadro
 						value.SalaryInfo = this;
 					}
 					this.SendPropertyChanged("EmployeeInfo");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[Participation in project]")]
+	public partial class Participation_in_project : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Nullable<long> _ProjId;
+		
+		private long _EmpId;
+		
+		private System.Nullable<System.DateTime> _StartDate;
+		
+		private System.Nullable<System.DateTime> _StopDate;
+		
+		private EntityRef<EmployeeInfo> _EmployeeInfo;
+		
+    #region Определения метода расширяемости
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnProjIdChanging(System.Nullable<long> value);
+    partial void OnProjIdChanged();
+    partial void OnEmpIdChanging(long value);
+    partial void OnEmpIdChanged();
+    partial void OnStartDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnStartDateChanged();
+    partial void OnStopDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnStopDateChanged();
+    #endregion
+		
+		public Participation_in_project()
+		{
+			this._EmployeeInfo = default(EntityRef<EmployeeInfo>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjId", DbType="BigInt")]
+		public System.Nullable<long> ProjId
+		{
+			get
+			{
+				return this._ProjId;
+			}
+			set
+			{
+				if ((this._ProjId != value))
+				{
+					this.OnProjIdChanging(value);
+					this.SendPropertyChanging();
+					this._ProjId = value;
+					this.SendPropertyChanged("ProjId");
+					this.OnProjIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmpId", DbType="BigInt NOT NULL", IsPrimaryKey=true)]
+		public long EmpId
+		{
+			get
+			{
+				return this._EmpId;
+			}
+			set
+			{
+				if ((this._EmpId != value))
+				{
+					if (this._EmployeeInfo.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnEmpIdChanging(value);
+					this.SendPropertyChanging();
+					this._EmpId = value;
+					this.SendPropertyChanged("EmpId");
+					this.OnEmpIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="Date")]
+		public System.Nullable<System.DateTime> StartDate
+		{
+			get
+			{
+				return this._StartDate;
+			}
+			set
+			{
+				if ((this._StartDate != value))
+				{
+					this.OnStartDateChanging(value);
+					this.SendPropertyChanging();
+					this._StartDate = value;
+					this.SendPropertyChanged("StartDate");
+					this.OnStartDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StopDate", DbType="Date")]
+		public System.Nullable<System.DateTime> StopDate
+		{
+			get
+			{
+				return this._StopDate;
+			}
+			set
+			{
+				if ((this._StopDate != value))
+				{
+					this.OnStopDateChanging(value);
+					this.SendPropertyChanging();
+					this._StopDate = value;
+					this.SendPropertyChanged("StopDate");
+					this.OnStopDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="EmployeeInfo_Participation_in_project", Storage="_EmployeeInfo", ThisKey="EmpId", OtherKey="EmployeeID", IsForeignKey=true)]
+		public EmployeeInfo EmployeeInfo
+		{
+			get
+			{
+				return this._EmployeeInfo.Entity;
+			}
+			set
+			{
+				EmployeeInfo previousValue = this._EmployeeInfo.Entity;
+				if (((previousValue != value) 
+							|| (this._EmployeeInfo.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._EmployeeInfo.Entity = null;
+						previousValue.Participation_in_project = null;
+					}
+					this._EmployeeInfo.Entity = value;
+					if ((value != null))
+					{
+						value.Participation_in_project = this;
+						this._EmpId = value.EmployeeID;
+					}
+					else
+					{
+						this._EmpId = default(long);
+					}
+					this.SendPropertyChanged("EmployeeInfo");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[Programming Languages]")]
+	public partial class Programming_Languages : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _id;
+		
+		private string _name;
+		
+		private long _ProjectId;
+		
+		private EntityRef<ProjectInfo> _ProjectInfo;
+		
+    #region Определения метода расширяемости
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(long value);
+    partial void OnidChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void OnProjectIdChanging(long value);
+    partial void OnProjectIdChanged();
+    #endregion
+		
+		public Programming_Languages()
+		{
+			this._ProjectInfo = default(EntityRef<ProjectInfo>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="BigInt NOT NULL", IsPrimaryKey=true)]
+		public long id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="NChar(20) NOT NULL", CanBeNull=false)]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectId", DbType="BigInt NOT NULL")]
+		public long ProjectId
+		{
+			get
+			{
+				return this._ProjectId;
+			}
+			set
+			{
+				if ((this._ProjectId != value))
+				{
+					if (this._ProjectInfo.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnProjectIdChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectId = value;
+					this.SendPropertyChanged("ProjectId");
+					this.OnProjectIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ProjectInfo_Programming_Languages", Storage="_ProjectInfo", ThisKey="ProjectId", OtherKey="ProjectID", IsForeignKey=true)]
+		public ProjectInfo ProjectInfo
+		{
+			get
+			{
+				return this._ProjectInfo.Entity;
+			}
+			set
+			{
+				ProjectInfo previousValue = this._ProjectInfo.Entity;
+				if (((previousValue != value) 
+							|| (this._ProjectInfo.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._ProjectInfo.Entity = null;
+						previousValue.Programming_Languages.Remove(this);
+					}
+					this._ProjectInfo.Entity = value;
+					if ((value != null))
+					{
+						value.Programming_Languages.Add(this);
+						this._ProjectId = value.ProjectID;
+					}
+					else
+					{
+						this._ProjectId = default(long);
+					}
+					this.SendPropertyChanged("ProjectInfo");
 				}
 			}
 		}

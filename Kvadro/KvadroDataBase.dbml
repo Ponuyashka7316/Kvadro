@@ -29,6 +29,7 @@
       <Column Name="EmployeeStart" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="EmployeeStop" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="ProjectID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="EmployeeInfo_Participation_in_project" Member="Participation_in_project" ThisKey="EmployeeID" OtherKey="EmpId" Type="Participation_in_project" Cardinality="One" />
       <Association Name="ProjectInfo_EmployeeInfo" Member="ProjectInfo" ThisKey="ProjectID" OtherKey="ProjectID" Type="ProjectInfo" IsForeignKey="true" />
       <Association Name="SalaryInfo_EmployeeInfo" Member="SalaryInfo" ThisKey="EmployeeID" OtherKey="EmployeeId" Type="SalaryInfo" IsForeignKey="true" />
     </Type>
@@ -43,6 +44,7 @@
       <Column Name="Cost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Column Name="INN" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Association Name="ProjectInfo_EmployeeInfo" Member="EmployeeInfo" ThisKey="ProjectID" OtherKey="ProjectID" Type="EmployeeInfo" />
+      <Association Name="ProjectInfo_Programming_Languages" Member="Programming_Languages" ThisKey="ProjectID" OtherKey="ProjectId" Type="Programming_Languages" />
       <Association Name="CustomerInfo_ProjectInfo" Member="CustomerInfo" ThisKey="INN" OtherKey="INN" Type="CustomerInfo" IsForeignKey="true" />
     </Type>
   </Table>
@@ -54,6 +56,23 @@
       <Column Name="Exempt" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Column Name="EmployeeId" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Association Name="SalaryInfo_EmployeeInfo" Member="EmployeeInfo" ThisKey="EmployeeId" OtherKey="EmployeeID" Type="EmployeeInfo" Cardinality="One" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Participation in project]" Member="Participation_in_project">
+    <Type Name="Participation_in_project">
+      <Column Name="ProjId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="EmpId" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="StopDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="EmployeeInfo_Participation_in_project" Member="EmployeeInfo" ThisKey="EmpId" OtherKey="EmployeeID" Type="EmployeeInfo" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Programming Languages]" Member="Programming_Languages">
+    <Type Name="Programming_Languages">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Association Name="ProjectInfo_Programming_Languages" Member="ProjectInfo" ThisKey="ProjectId" OtherKey="ProjectID" Type="ProjectInfo" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

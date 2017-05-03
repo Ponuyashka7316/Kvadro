@@ -46,29 +46,36 @@
                     <TextBox x:Name="TextOut" HorizontalAlignment="Left" Margin="10,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="1096" FontFamily="Times New Roman" FontSize="14" Height="236" AcceptsReturn="True" AcceptsTab="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True"/>
                     <TextBlock x:Name="Timer2" HorizontalAlignment="Left" Margin="1204,164,0,0" TextWrapping="Wrap" Text="_________" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="16" RenderTransformOrigin="-1.214,-3.354"/>
                     <TextBlock x:Name="Timer1" HorizontalAlignment="Left" Margin="1204,126,0,0" TextWrapping="Wrap" Text="_________" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="16"/>
-                    <Button x:Name="Clear" Content="textBox Clear" HorizontalAlignment="Left" Margin="1169,282,0,0" VerticalAlignment="Top" Width="115" FontFamily="Times New Roman" FontSize="14" Click="Clear_Click"/>
-                    <Button Content="listBox Clear" HorizontalAlignment="Left" Margin="1169,332,0,0" VerticalAlignment="Top" Width="115" FontFamily="Times New Roman" FontSize="14" Click="Button_Click_1"/>
+                    <Button x:Name="Clear" Content="textBox Clear" HorizontalAlignment="Left" Margin="1170,229,0,0" VerticalAlignment="Top" Width="115" FontFamily="Times New Roman" FontSize="14" Click="Clear_Click"/>
+                    <Button Content="listBox Clear" HorizontalAlignment="Left" Margin="1170,256,0,0" VerticalAlignment="Top" Width="115" FontFamily="Times New Roman" FontSize="14" Click="Button_Click_1"/>
                     <ComboBox x:Name="TypeChoose" HorizontalAlignment="Left" Margin="1115,8,0,0" VerticalAlignment="Top" Width="169" SelectedIndex="0" FontFamily="Times New Roman" FontSize="14">
                         <System:String>textBox</System:String>
                         <System:String>listBox</System:String>
                     </ComboBox>
                     <TextBlock HorizontalAlignment="Left" Margin="972,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="16"><Run Text="Change input form:"/><LineBreak/><Run/></TextBlock>
-                    <TextBlock x:Name="Count" HorizontalAlignment="Left" Margin="1218,261,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="14"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="1163,248,0,0" TextWrapping="Wrap" Text="Records outputted:" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="14"/>
+                    <TextBlock x:Name="Count" HorizontalAlignment="Left" Margin="1269,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Times New Roman" Text ="0" FontSize="14"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="1127,208,0,0" TextWrapping="Wrap" Text="Records outputted:" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="14"/>
                     <TextBlock x:Name="Timer1_Copy" HorizontalAlignment="Left" Margin="1121,126,0,0" TextWrapping="Wrap" Text="для textBox" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="16"/>
                     <TextBlock x:Name="Timer2_Copy" HorizontalAlignment="Left" Margin="1121,164,0,0" TextWrapping="Wrap" Text="для listBox" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="16"/>
                     <GroupBox Header="Lead time:" HorizontalAlignment="Left" Height="100" Margin="1116,97,0,0" VerticalAlignment="Top" Width="169" FontFamily="Times New Roman" FontSize="16" Focusable="True" BorderBrush="#FF085C8F"/>
                     <GridSplitter HorizontalAlignment="Left" Height="1" Margin="1106,571,0,0" VerticalAlignment="Top" Width="0"/>
                     <TextBlock VerticalAlignment="Center" FontSize="18" 
                         Foreground="White" HorizontalAlignment="Center" Margin="591,-1,590,549"><Run Text="This is textBox:"/></TextBlock>
-                    <GroupBox Header="" HorizontalAlignment="Left" Height="132" Margin="1118,233,0,0" VerticalAlignment="Top" Width="173" FontFamily="Times New Roman"/>
+                    <GroupBox Header="" HorizontalAlignment="Left" Height="87" Margin="1116,197,0,0" VerticalAlignment="Top" Width="173" FontFamily="Times New Roman"/>
                     <GroupBox Header="" HorizontalAlignment="Left" Height="103" Margin="1111,-6,0,0" VerticalAlignment="Top" Width="180"/>
-                    <Button Content="Project" Height="75" HorizontalAlignment="Left" Margin="1121,456,0,0" x:Name="Button1_Copy" VerticalAlignment="Top" Width="170" Click="Button1_Click" FontFamily="Showcard Gothic" FontSize="36">
+                    <Button Content="Project" Height="75" HorizontalAlignment="Left" Margin="1121,387,0,0" x:Name="Button1_Copy" VerticalAlignment="Top" Width="170" Click="Button1_Click" FontFamily="Showcard Gothic" FontSize="36">
                         <Button.Background>
                             <ImageBrush ImageSource="Resources/images.jpg" />
                         </Button.Background>
                     </Button>
-                    <Button Content="Customers" Height="76" HorizontalAlignment="Left" Margin="1121,359,0,0" x:Name="Button1_Copy1" VerticalAlignment="Top" Width="170" Click="Button1_Copy1_Click" FontFamily="Showcard Gothic" FontSize="24">
+                    <Button Content="Customers" Height="76" HorizontalAlignment="Left" Margin="1121,306,0,0" x:Name="Button1_Copy1" VerticalAlignment="Top" Width="170" Click="Button1_Copy1_Click" FontFamily="Showcard Gothic" FontSize="24">
+                        <Button.Background>
+                            <ImageBrush ImageSource="Resources/images.jpg" />
+                        </Button.Background>
+                    </Button>
+                    <TextBlock HorizontalAlignment="Left" Margin="1121,289,0,0" TextWrapping="Wrap" Text="Using Entity EDM Model:" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="14"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="1127,467,0,0" TextWrapping="Wrap" Text="Using ADO.NET:" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="14"/>
+                    <Button Content="Project" Height="75" HorizontalAlignment="Left" Margin="1121,483,0,0" x:Name="Button1_Copy2" VerticalAlignment="Top" Width="170" Click="Button1_Click" FontFamily="Showcard Gothic" FontSize="36">
                         <Button.Background>
                             <ImageBrush ImageSource="Resources/images.jpg" />
                         </Button.Background>

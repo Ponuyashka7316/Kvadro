@@ -74,7 +74,7 @@ namespace Kvadro
                         EmployeeName = e.EmployeeName,
                         Year = e.Year,
                         Salary = e.SalaryInfo.Salary,
-                        EmployeeStart = (DateTime)e.EmployeeStart,
+                        EmployeeStart = (DateTime)e.Participation_in_project.StartDate,
                         ProjectName = pi.ProjectName,
                         ProjectStart = (DateTime)pi.ProjectStart,
                         Chief = pi.Chief
