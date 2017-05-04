@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kvadro"
         mc:Ignorable="d"
-        Title="listBoxWindow" Height="300" Width="300">
+        Title="listBoxWindow" Height="300" Width="527.82">
     <Grid x:Name="l">
-        <ListBox x:Name="l1" HorizontalAlignment="Left" Height="245" VerticalAlignment="Top" Width="292"/>
+        <ListBox x:Name="l1" HorizontalAlignment="Left" Height="245" VerticalAlignment="Top" Width="520"/>
 
     </Grid>
 </Window>

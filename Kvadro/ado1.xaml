@@ -57,10 +57,10 @@
                         </DataGrid>
 
                         <StackPanel HorizontalAlignment="Center"  Grid.Row="1" Orientation="Horizontal"/>
-                        <Button Content="Update" HorizontalAlignment="Left" Margin="10,214,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+                        <Button Content="Update" HorizontalAlignment="Left" Margin="10,214,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Height="32"/>
                         <Button x:Name="Delete" Content="Delete" HorizontalAlignment="Left" Margin="90,214,0,0" Width="75" Height="Auto" Click="Delete_Click"/>
                         <Button x:Name="Exit" Content="Exit" HorizontalAlignment="Left" Margin="598,214,0,0" VerticalAlignment="Top" Width="75" Click="Exit_Click"/>
-                        <Button x:Name="AddBtn" Content="Add record" HorizontalAlignment="Left" Margin="170,214,0,0" VerticalAlignment="Top" Width="75" Click="AddBtn_Click"/>
+                        <Button x:Name="AddBtn" Content="Add record" HorizontalAlignment="Left" Margin="170,216,0,0" VerticalAlignment="Top" Width="75" Click="AddBtn_Click"/>
                         <TextBox x:Name="lang" HorizontalAlignment="Left" Height="23" Margin="805,2,0,0" TextWrapping="Wrap" Text="language" VerticalAlignment="Top" Width="120"/>
                         <TextBox x:Name="Base" HorizontalAlignment="Left" Height="23" Margin="805,30,0,0" TextWrapping="Wrap" Text="Base" VerticalAlignment="Top" Width="120"/>
                         <TextBox x:Name="comment" HorizontalAlignment="Left" Height="23" Margin="805,58,0,0" TextWrapping="Wrap" Text="comment" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
@@ -74,7 +74,9 @@
                         <TextBox x:Name="year" HorizontalAlignment="Left" Height="23" Margin="680,142,0,0" TextWrapping="Wrap" Text="year" VerticalAlignment="Top" Width="120"/>
                         <Button Content="Parallel output" HorizontalAlignment="Left" Margin="680,170,0,0" VerticalAlignment="Top" Width="102" Height="24" Click="Button_Click_1"/>
                         <Button Content="Listbox Parallel output" HorizontalAlignment="Left" Margin="787,170,0,0" VerticalAlignment="Top" Width="138" Height="24" Click="Button_Click_2"/>
-                        <Button Content="Load XML" HorizontalAlignment="Left" Margin="680,206,0,0" VerticalAlignment="Top" Width="102" Click="Button_Click_3"/>
+                        <Button Content="Load XML" HorizontalAlignment="Left" Margin="823,206,0,0" VerticalAlignment="Top" Width="102" Click="Button_Click_3"/>
+                        <TextBox x:Name="xmlp" HorizontalAlignment="Left" Height="23" Margin="698,210,0,0" TextWrapping="Wrap" Text="XMLPath" VerticalAlignment="Top" Width="120"/>
+                        <Button Content="ParallelTextBox" HorizontalAlignment="Left" Margin="805,142,0,0" VerticalAlignment="Top" Width="120" Height="25" Click="Button_Click_4"/>
 
                     </Grid>
                     <TextBlock VerticalAlignment="Center" FontSize="18" 

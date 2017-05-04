@@ -153,28 +153,34 @@ namespace Kvadro
         {
             this.Hide();
            textBoxWindow w = new textBoxWindow();
-
+            this.Close();
             w.ShowDialog();
-           
-           
-
+            
 
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            textBoxWindow t = new textBoxWindow();
-            
-            this.Hide();
+            listBoxWindow t = new listBoxWindow();
+
+            this.Close();
             t.ShowDialog();
+            
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            var xml = XDocument.Load("c:\\Somewhere\\Books.xml").Root;
+            var xml = XDocument.Load(xmlp.Text).Root;
             kvadroGrid.DataContext = xml;
         }
 
-       
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            ParallelTextBox w = new ParallelTextBox();
+            
+            w.ShowDialog();
+            
+        }
     }
 }

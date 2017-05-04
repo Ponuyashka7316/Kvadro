@@ -30,32 +30,34 @@ namespace Kvadro
             con.Open();
             SqlDataReader reader = com.ExecuteReader();
             int nrec = 0;
-            while (reader.HasRows)
+            if (reader.HasRows)
             {
 
-                reader.Read();
-                l1.Items.Add(
-                    reader.GetSqlInt64(0).ToString()
-                 + "     " + reader.GetSqlString(1).ToString()
-                 + "     " + reader.GetSqlString(2).ToString()
-                 + "     " + reader.GetSqlString(3).ToString()
-                 + "     " + reader.GetSqlInt32(4).ToString()
-                 + "     " + reader.GetSqlDateTime(5).ToString()
-                 + "     " + reader.GetSqlString(6).ToString()
-                 + "     " + reader.GetSqlString(7).ToString()
-                 + "     " + reader.GetSqlString(8).ToString()
-                 + "     " + reader.GetSqlInt32(9).ToString()
-                 + "     " + reader.GetSqlInt64(10).ToString());
+                while (reader.Read())
+                {
+                    l1.Items.Add(
+                        reader.GetSqlValue(0).ToString()
+                     + "     " + reader.GetSqlValue(1).ToString()
+                     + "     " + reader.GetSqlValue(2).ToString()
+                     + "     " + reader.GetSqlValue(3).ToString()
+                     + "     " + reader.GetSqlValue(4).ToString()
+                     + "     " + reader.GetSqlValue(5).ToString()
+                     + "     " + reader.GetSqlValue(6).ToString()
+                     + "     " + reader.GetSqlValue(7).ToString()
+                     + "     " + reader.GetSqlValue(8).ToString()
+                     + "     " + reader.GetSqlValue(9).ToString()
+                     + "     " + reader.GetSqlValue(10).ToString());
 
-
-
-                nrec++;
-
-
+                    nrec++;
+                }
+                reader.Close();
+                con.Close();
             }
-            reader.Close();
-            con.Close();
-            long elapsed = sw2.ElapsedMilliseconds;
+           
+                
+                long elapsed = sw2.ElapsedMilliseconds;
+                MessageBox.Show("Время выполнения: " + elapsed, "Кол-во записей:" + nrec);
+           
         }
     }
 }

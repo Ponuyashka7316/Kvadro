@@ -51,3 +51,5 @@ C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvad
 C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\textBoxWindow.baml
 C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\listBoxWindow.g.cs
 C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\listBoxWindow.baml
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\ParallelTextBox.g.cs
+C:\Users\Sergey\Desktop\ТРС\2 семестр\4 курс 2 семестр\Kvadro\Kvadro\obj\Debug\ParallelTextBox.baml
